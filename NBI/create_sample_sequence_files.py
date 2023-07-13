@@ -73,22 +73,26 @@ def process_vcf(vcf_file, gene_info, reference_fasta, output_directory):
                         gene_fasta = load_gene_sequence(reference_fasta, gene_name)
                         gene_ref_base = gene_fasta[gene_relative_position]
                         if gene_ref_base != ref_base:
-                            print(f"Mismatch in gene {gene_name} at position {position}: Expected {ref_base}, Found {gene_ref_base}")
+                            print(f"Mismatch in gene {gene_name} at position {position}, start {gene_start_position}, relative {gene_relative_position}: Expected {ref_base}, Found {gene_ref_base}")
                         # Create reference gene FASTA file
-                        reference_gene_file = f'{output_directory}/{gene_name}_REFERENCE.fasta'
+                        reference_gene_file = f'{output_directory}/hom_{gene_name}_REFERENCE.fasta'
                         with open(reference_gene_file, 'w') as reference_file:
                             reference_file.write(f'>{gene_name}\n{gene_fasta}\n')
                         # Create mutant gene FASTA files for each sample
                         for sample_name, sample_value in zip(sample_names, sample_values):
-                            allele_index = int(sample_value.split(':')[0].split('/')[0])
-                            print(sample_name)
-                            print(allele_index)
-                            if allele_index == 0:
-                                    alt_base = ref_base
+                            print(f"Sample: {sample_name}")
+                            if sample_value.split(':')[0].split('/')[0] == '.':
+                                print(f"SNP at {position} is missing in this sample")
+                                alt_base = "N"
                             else:
-                                    alt_base = alt_bases[allele_index - 1]
+                                allele_index = int(sample_value.split(':')[0].split('/')[0])
+                                print(f"Allele index at {position}: {allele_index}")
+                                if allele_index == 0:
+                                        alt_base = ref_base
+                                else:
+                                        alt_base = alt_bases[allele_index - 1] #always 0?
                             mutant_gene_fasta = gene_fasta[:gene_relative_position] + alt_base + gene_fasta[gene_relative_position + 1:]
-                            mutant_gene_file = f'{output_directory}/{gene_name}_{sample_name}_SAMPLE.fasta'
+                            mutant_gene_file = f'{output_directory}/hom_{gene_name}_{sample_name}_SAMPLE.fasta'
                             # Check if the mutant gene FASTA file already exists
                             if os.path.exists(mutant_gene_file):
                                 # Read the existing file and update the SNP position with the alternate allele
