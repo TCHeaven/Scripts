@@ -58,26 +58,28 @@ def process_vcf(vcf_file, gene_info, reference_fasta, output_directory):
                 header_line = line.strip()
                 sample_names = header_line.split('\t')[9:]
                 break
-        for line in file:
-            if not line.startswith('#'):
-                fields = line.split('\t')
-                chromosome = fields[0]
-                position = int(fields[1])
-                ref_base = fields[3]
-                alt_bases = fields[4].split(',')
-                sample_values = fields[9:]
-                for gene_name, info in gene_info.items():
+        for gene_name, info in gene_info.items():
+            gene_fasta = load_gene_sequence(reference_fasta, gene_name)
+            # Create reference gene FASTA file
+            reference_gene_file = f'{output_directory}/hom_{gene_name}_REFERENCE.fasta'
+            with open(reference_gene_file, 'w') as reference_file:
+                reference_file.write(f'>{gene_name}\n{gene_fasta}\n')
+            for line in file:
+                if not line.startswith('#'):
+                    fields = line.split('\t')
+                    chromosome = fields[0]
+                    position = int(fields[1])
+                    ref_base = fields[3]
+                    alt_bases = fields[4].split(',')
+                    sample_values = fields[9:]
                     if info['chromosome'] == chromosome and info['start'] <= position <= info['stop']:
                         gene_start_position = info['start']
                         gene_relative_position = position - gene_start_position
-                        gene_fasta = load_gene_sequence(reference_fasta, gene_name)
+                        print("gene_relative_position:", gene_relative_position)
+                        print("length of gene_fasta:", len(gene_fasta))
                         gene_ref_base = gene_fasta[gene_relative_position]
                         if gene_ref_base != ref_base:
                             print(f"Mismatch in gene {gene_name} at position {position}, start {gene_start_position}, relative {gene_relative_position}: Expected {ref_base}, Found {gene_ref_base}")
-                        # Create reference gene FASTA file
-                        reference_gene_file = f'{output_directory}/hom_{gene_name}_REFERENCE.fasta'
-                        with open(reference_gene_file, 'w') as reference_file:
-                            reference_file.write(f'>{gene_name}\n{gene_fasta}\n')
                         # Create mutant gene FASTA files for each sample
                         for sample_name, sample_value in zip(sample_names, sample_values):
                             print(f"Sample: {sample_name}")
