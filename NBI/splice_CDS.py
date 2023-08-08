@@ -13,6 +13,7 @@ def splice_genes(gff3_file, multi_fasta_file, output_file):
     CDS_coordinates = {}
     with open(gff3_file, "r") as gff_file:
         #print("gff open")
+        i = 1
         for line in gff_file:
             #print("processing gff")
             if line.startswith("#"):
@@ -26,7 +27,8 @@ def splice_genes(gff3_file, multi_fasta_file, output_file):
                 print(gene_start)
                 gene_end = int(gene_info[4])
             if gene_info[2] == "CDS":
-                CDS_id = gene_info[8].split(";")[0].replace("ID=", "")
+                CDS_id = gene_info[8].split(";")[0].replace("ID=", "") + str(i)
+                i += 1
                 CDS_chrom = gene_info[0]  # Store the chromosome name from the GFF3 file
                 CDS_start = int(gene_info[3]) - gene_start
                 print("CDS start position relative to gene:")
@@ -63,4 +65,3 @@ def splice_genes(gff3_file, multi_fasta_file, output_file):
                         print(CDS_end)
 
 splice_genes(gff3_file, multi_fasta_file, output_file)
-
