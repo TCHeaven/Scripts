@@ -8,6 +8,9 @@ vcf_file = sys.argv[1]
 gff3_file = sys.argv[2]
 output_directory = sys.argv[3]
 
+print(vcf_file)
+print(gff3_file)
+print(output_directory)
 
 def extract_gene_snps(vcf_file, gff3_file, output_directory):
     # Parse the GFF3 file to extract gene coordinates
@@ -19,7 +22,7 @@ def extract_gene_snps(vcf_file, gff3_file, output_directory):
             gene_info = line.strip().split("\t")
             if gene_info[2] != "CDS":
                 continue
-            gene_id = gene_info[8].split(";")[0].replace("ID=", "").split(".")[0:2]
+            gene_id = "_".join(gene_info[8].split(";")[0].replace("ID=", "").split(".")[0:2])
             gene_chrom = gene_info[0]  # Store the chromosome name from the GFF3 file
             gene_start = int(gene_info[3])
             gene_end = int(gene_info[4])
