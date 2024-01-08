@@ -1,0 +1,625 @@
+<!-- report.tmpl -->
+<html>
+<head>
+<title>bam Report</title>
+<style type="text/css">
+    	.first { background-color: #2894ff; color: #FFFFFF; }
+        .odd  { background-color: #FFFFFF }
+        .even { background-color: #97cbff }
+  pre {
+   	padding: 1em;
+    border: 1px dashed #2f6fab;
+    color: black;
+    background-color: #f9f9f9;
+    line-height: 1.1em;
+    WORD-WRAP: break-word;
+	}
+h2 {
+  color: #800000;
+  padding-bottom: 0;
+  margin-bottom: 0;
+  clear:left;
+  }
+</style>
+
+<style type="text/css">
+    div.summary {
+    width: 18em;
+  }
+   div.summary ul {
+  padding-left:0;
+  list-style-type:none;
+  font-weight:bold;
+  }
+  
+  div.summary ul li img {
+  margin-bottom:-0.5em;
+  margin-top:0.5em;
+  }
+</style>
+
+<style type="text/css">
+  .centeredImage
+    {
+    text-align:center;
+    margin-top:0px;
+    margin-bottom:0px;
+    padding:0px;
+    }
+</style>
+
+</head>
+<body>
+<h1>bam Report</h1><div class="summary">
+    <h2>Table of Contents</h2>
+        <ul>
+<li><a href=#M100>Command</a></li>
+<li><a href=#M150>Result Table</a></li>
+<li><a href=#M200>Distribution</a></li>
+<li><a href=#M300>Batch effect</a></li>        </ul>
+</div>
+
+<div><h2 id="M100">Command</h2>
+<p>The report was generated at Tue Jan 21 15:10:14 2014. Here is your command for generating this report, keep it in order to reproduce the result.</p>
+<pre>perl /home/zhaos/source/perl_cqs/software_QC/RC2/qc3.pl -m b -i 11bam.list -t 11 -r /data/cqs/guoy1/reference/annotation/hg19/hg19_protein_coding.bed -g /data/cqs/guoy1/reference/annotation/hg19/Homo_sapiens.GRCh37.63_protein_coding_chr1-22-X-Y-M.gtf -o brca11Sample_bam_result -d</pre>
+</div>
+
+<div><h2 id="M150">Result Table</h2>
+<p>Coloum names:</p>
+<pre>
+On/Off target: Number of sequences mapped on/off the regions indicated in target region file
+Off-target-intron: Number of sequences mapped off the regions indicated in target region file, and on the intron regions indicated in gtf file
+Off-target-intergenic: Number of sequences mapped off the regions indicated in target region file, and on the intergenic regions indicated in gtf file
+Off-target-mito: Number of sequences mapped off the regions indicated in target region file, and on the mitochondria regions
+MQ: Mapping quality of the sequences
+InsertSize: Length of sequence from the leftmost position to the rightmost position
+Depth: The reading depth of sequences
+On-target percent: Percent of target positions that were sequenced
+</pre>
+<table align="center" style="border:#2894ff 1px solid;">
+ 
+                 <tr class="first">
+                  
+                 
+      <td align="center">Sample</td>
+      <td align="center">Instrument</td>
+      <td align="center">Run</td>
+      <td align="center">Flowcell</td>
+      <td align="center">Lane</td>
+      <td align="center">Unmapped</td>
+      <td align="center">Total Mapped</td>
+      <td align="center">On-target</td>
+      <td align="center">Off-target</td>
+      <td align="center">Off-target-intron</td>
+      <td align="center">Off-target-intergenic</td>
+      <td align="center">Off-target-mito</td>
+      <td align="center">Total Mapped(Mean MQ)</td>
+      <td align="center">On-target(Mean MQ)</td>
+      <td align="center">Off-target(Mean MQ)</td>
+      <td align="center">Off-target-intron(Mean MQ)</td>
+      <td align="center">Off-target-intergenic(Mean MQ)</td>
+      <td align="center">Off-target-mito(Mean MQ)</td>
+      <td align="center">Total Mapped(Mean InsertSize)</td>
+      <td align="center">On-target(Mean InsertSize)</td>
+      <td align="center">Off-target(Mean InsertSize)</td>
+      <td align="center">Off-target-intron(Mean InsertSize)</td>
+      <td align="center">Off-target-intergenic(Mean InsertSize)</td>
+      <td align="center">Off-target-mito(Mean InsertSize)</td>
+      <td align="center">Total Reads(Mean Depth)</td>
+      <td align="center">On-target(Mean Depth)</td>
+      <td align="center">Off-target(Mean Depth)</td>
+      <td align="center">Off-target-intron(Mean Depth)</td>
+      <td align="center">Off-target-intergenic(Mean Depth)</td>
+      <td align="center">Off-target-mito(Mean Depth)</td>
+      <td align="center">On-target percent (Depth larger than 0)</td>
+      <td align="center">On-target percent (Depth larger than 10)</td>
+      <td align="center">On-target percent (Depth larger than 30)</td>
+   </tr>
+ 
+                 
+                    <tr class="odd">
+                  
+                  
+                 
+      <td align="center">TCGA-A7-A0D9-01A</td>
+      <td align="center">HWUSI-EAS1612_105608784</td>
+      <td align="center">1</td>
+      <td align="center">111</td>
+      <td align="center">13801</td>
+      <td align="center">1092664</td>
+      <td align="center">136951242</td>
+      <td align="center">53105492</td>
+      <td align="center">83845750</td>
+      <td align="center">63331421</td>
+      <td align="center">20282631</td>
+      <td align="center">48089</td>
+      <td align="center">53.55</td>
+      <td align="center">54.60</td>
+      <td align="center">52.89</td>
+      <td align="center">54.28</td>
+      <td align="center">48.53</td>
+      <td align="center">49.77</td>
+      <td align="center">333.50</td>
+      <td align="center">322.36</td>
+      <td align="center">338.63</td>
+      <td align="center">341.27</td>
+      <td align="center">329.35</td>
+      <td align="center">326.43</td>
+      <td align="center">10.23</td>
+      <td align="center">72.80</td>
+      <td align="center">6.44</td>
+      <td align="center">10.19</td>
+      <td align="center">3.07</td>
+      <td align="center">229.98</td>
+      <td align="center">0.69</td>
+      <td align="center">0.44</td>
+      <td align="center">0.34</td>
+   </tr>
+ 
+                 
+                    <tr class="even">
+                  
+                  
+                 
+      <td align="center">TCGA-BH-A0B3-01A</td>
+      <td align="center">HWUSI-EAS711_105804534</td>
+      <td align="center">5</td>
+      <td align="center">107</td>
+      <td align="center">4470</td>
+      <td align="center">927210</td>
+      <td align="center">158525580</td>
+      <td align="center">66250292</td>
+      <td align="center">92275288</td>
+      <td align="center">67567160</td>
+      <td align="center">24423486</td>
+      <td align="center">6020</td>
+      <td align="center">52.82</td>
+      <td align="center">53.98</td>
+      <td align="center">51.99</td>
+      <td align="center">53.21</td>
+      <td align="center">48.58</td>
+      <td align="center">50.21</td>
+      <td align="center">279.85</td>
+      <td align="center">275.73</td>
+      <td align="center">281.97</td>
+      <td align="center">284.28</td>
+      <td align="center">274.55</td>
+      <td align="center">272.90</td>
+      <td align="center">10.51</td>
+      <td align="center">93.49</td>
+      <td align="center">6.23</td>
+      <td align="center">9.93</td>
+      <td align="center">3.14</td>
+      <td align="center">30.80</td>
+      <td align="center">0.72</td>
+      <td align="center">0.45</td>
+      <td align="center">0.37</td>
+   </tr>
+ 
+                 
+                    <tr class="odd">
+                  
+                  
+                 
+      <td align="center">TCGA-BH-A0B8-01A</td>
+      <td align="center">HWUSI-EAS1625_105908207</td>
+      <td align="center">6</td>
+      <td align="center">74</td>
+      <td align="center">16985</td>
+      <td align="center">1655205</td>
+      <td align="center">214026196</td>
+      <td align="center">84816005</td>
+      <td align="center">129210191</td>
+      <td align="center">94025915</td>
+      <td align="center">34801284</td>
+      <td align="center">45565</td>
+      <td align="center">52.96</td>
+      <td align="center">54.08</td>
+      <td align="center">52.23</td>
+      <td align="center">53.53</td>
+      <td align="center">48.67</td>
+      <td align="center">48.86</td>
+      <td align="center">279.71</td>
+      <td align="center">275.75</td>
+      <td align="center">281.60</td>
+      <td align="center">283.83</td>
+      <td align="center">274.57</td>
+      <td align="center">272.52</td>
+      <td align="center">10.71</td>
+      <td align="center">108.55</td>
+      <td align="center">6.54</td>
+      <td align="center">10.59</td>
+      <td align="center">3.28</td>
+      <td align="center">228.03</td>
+      <td align="center">0.79</td>
+      <td align="center">0.46</td>
+      <td align="center">0.39</td>
+   </tr>
+ 
+                 
+                    <tr class="even">
+                  
+                  
+                 
+      <td align="center">TCGA-BH-A0BJ-01A</td>
+      <td align="center">HWUSI-EAS574_105716864</td>
+      <td align="center">7</td>
+      <td align="center">8</td>
+      <td align="center">1677</td>
+      <td align="center">915877</td>
+      <td align="center">141994854</td>
+      <td align="center">53254242</td>
+      <td align="center">88740612</td>
+      <td align="center">62797925</td>
+      <td align="center">25703621</td>
+      <td align="center">19304</td>
+      <td align="center">52.81</td>
+      <td align="center">53.90</td>
+      <td align="center">52.15</td>
+      <td align="center">53.31</td>
+      <td align="center">49.31</td>
+      <td align="center">49.27</td>
+      <td align="center">298.28</td>
+      <td align="center">289.12</td>
+      <td align="center">302.36</td>
+      <td align="center">305.24</td>
+      <td align="center">294.32</td>
+      <td align="center">298.76</td>
+      <td align="center">7.98</td>
+      <td align="center">70.69</td>
+      <td align="center">5.05</td>
+      <td align="center">7.85</td>
+      <td align="center">2.76</td>
+      <td align="center">92.67</td>
+      <td align="center">0.73</td>
+      <td align="center">0.44</td>
+      <td align="center">0.35</td>
+   </tr>
+ 
+                 
+                    <tr class="odd">
+                  
+                  
+                 
+      <td align="center">TCGA-BH-A0BM-01A</td>
+      <td align="center">HWUSI-EAS404_105730715</td>
+      <td align="center">4</td>
+      <td align="center">19</td>
+      <td align="center">2838</td>
+      <td align="center">1175882</td>
+      <td align="center">117336275</td>
+      <td align="center">43684678</td>
+      <td align="center">73651597</td>
+      <td align="center">52968988</td>
+      <td align="center">20480976</td>
+      <td align="center">48401</td>
+      <td align="center">51.59</td>
+      <td align="center">52.89</td>
+      <td align="center">50.81</td>
+      <td align="center">52.04</td>
+      <td align="center">47.62</td>
+      <td align="center">48.51</td>
+      <td align="center">313.66</td>
+      <td align="center">301.17</td>
+      <td align="center">319.18</td>
+      <td align="center">321.74</td>
+      <td align="center">311.62</td>
+      <td align="center">311.60</td>
+      <td align="center">7.42</td>
+      <td align="center">55.47</td>
+      <td align="center">4.76</td>
+      <td align="center">7.37</td>
+      <td align="center">2.54</td>
+      <td align="center">208.79</td>
+      <td align="center">0.69</td>
+      <td align="center">0.41</td>
+      <td align="center">0.31</td>
+   </tr>
+ 
+                 
+                    <tr class="even">
+                  
+                  
+                 
+      <td align="center">TCGA-BH-A0C0-01A</td>
+      <td align="center">ILLUMINA-63A70C_105583654</td>
+      <td align="center">7</td>
+      <td align="center">19</td>
+      <td align="center">12853</td>
+      <td align="center">980429</td>
+      <td align="center">141416749</td>
+      <td align="center">58978073</td>
+      <td align="center">82438676</td>
+      <td align="center">62147851</td>
+      <td align="center">20021515</td>
+      <td align="center">13346</td>
+      <td align="center">53.51</td>
+      <td align="center">54.61</td>
+      <td align="center">52.72</td>
+      <td align="center">54.30</td>
+      <td align="center">47.76</td>
+      <td align="center">50.50</td>
+      <td align="center">287.35</td>
+      <td align="center">280.21</td>
+      <td align="center">290.98</td>
+      <td align="center">292.79</td>
+      <td align="center">284.62</td>
+      <td align="center">287.20</td>
+      <td align="center">11.12</td>
+      <td align="center">83.64</td>
+      <td align="center">6.65</td>
+      <td align="center">10.60</td>
+      <td align="center">3.15</td>
+      <td align="center">62.89</td>
+      <td align="center">0.67</td>
+      <td align="center">0.44</td>
+      <td align="center">0.35</td>
+   </tr>
+ 
+                 
+                    <tr class="odd">
+                  
+                  
+                 
+      <td align="center">TCGA-BH-A0DK-01A</td>
+      <td align="center">HWUSI-EAS712_105700244</td>
+      <td align="center">7</td>
+      <td align="center">76</td>
+      <td align="center">2277</td>
+      <td align="center">1586375</td>
+      <td align="center">175303522</td>
+      <td align="center">62392340</td>
+      <td align="center">112911182</td>
+      <td align="center">73230693</td>
+      <td align="center">39389787</td>
+      <td align="center">58810</td>
+      <td align="center">53.67</td>
+      <td align="center">54.46</td>
+      <td align="center">53.23</td>
+      <td align="center">54.20</td>
+      <td align="center">51.41</td>
+      <td align="center">50.69</td>
+      <td align="center">260.50</td>
+      <td align="center">258.20</td>
+      <td align="center">261.44</td>
+      <td align="center">265.19</td>
+      <td align="center">253.44</td>
+      <td align="center">258.33</td>
+      <td align="center">7.53</td>
+      <td align="center">79.76</td>
+      <td align="center">4.89</td>
+      <td align="center">7.26</td>
+      <td align="center">3.10</td>
+      <td align="center">296.84</td>
+      <td align="center">0.80</td>
+      <td align="center">0.44</td>
+      <td align="center">0.36</td>
+   </tr>
+ 
+                 
+                    <tr class="even">
+                  
+                  
+                 
+      <td align="center">TCGA-BH-A0DP-01A</td>
+      <td align="center">HWI-EAS97_105698468</td>
+      <td align="center">8</td>
+      <td align="center">106</td>
+      <td align="center">14846</td>
+      <td align="center">1711226</td>
+      <td align="center">165772051</td>
+      <td align="center">68630299</td>
+      <td align="center">97141752</td>
+      <td align="center">74314402</td>
+      <td align="center">22515772</td>
+      <td align="center">26655</td>
+      <td align="center">52.25</td>
+      <td align="center">53.66</td>
+      <td align="center">51.26</td>
+      <td align="center">52.78</td>
+      <td align="center">46.18</td>
+      <td align="center">48.81</td>
+      <td align="center">296.03</td>
+      <td align="center">285.12</td>
+      <td align="center">301.66</td>
+      <td align="center">304.14</td>
+      <td align="center">292.29</td>
+      <td align="center">297.74</td>
+      <td align="center">10.86</td>
+      <td align="center">83.46</td>
+      <td align="center">6.52</td>
+      <td align="center">10.47</td>
+      <td align="center">2.98</td>
+      <td align="center">107.73</td>
+      <td align="center">0.68</td>
+      <td align="center">0.44</td>
+      <td align="center">0.36</td>
+   </tr>
+ 
+                 
+                    <tr class="odd">
+                  
+                  
+                 
+      <td align="center">TCGA-BH-A0DP-10A</td>
+      <td align="center">HWI-EAS97_105698468</td>
+      <td align="center">5</td>
+      <td align="center">115</td>
+      <td align="center">13657</td>
+      <td align="center">1695734</td>
+      <td align="center">155553618</td>
+      <td align="center">60223582</td>
+      <td align="center">95330036</td>
+      <td align="center">70117124</td>
+      <td align="center">24940259</td>
+      <td align="center">8593</td>
+      <td align="center">53.23</td>
+      <td align="center">54.34</td>
+      <td align="center">52.52</td>
+      <td align="center">53.88</td>
+      <td align="center">48.69</td>
+      <td align="center">49.77</td>
+      <td align="center">300.44</td>
+      <td align="center">288.80</td>
+      <td align="center">305.85</td>
+      <td align="center">310.75</td>
+      <td align="center">289.91</td>
+      <td align="center">303.13</td>
+      <td align="center">8.75</td>
+      <td align="center">82.70</td>
+      <td align="center">5.40</td>
+      <td align="center">8.76</td>
+      <td align="center">2.68</td>
+      <td align="center">43.75</td>
+      <td align="center">0.74</td>
+      <td align="center">0.45</td>
+      <td align="center">0.37</td>
+   </tr>
+ 
+                 
+                    <tr class="even">
+                  
+                  
+                 
+      <td align="center">TCGA-BH-A0E0-01A</td>
+      <td align="center">HWUSI-EAS677_105571333</td>
+      <td align="center">1</td>
+      <td align="center">21</td>
+      <td align="center">10367</td>
+      <td align="center">845443</td>
+      <td align="center">129638688</td>
+      <td align="center">51246357</td>
+      <td align="center">78392331</td>
+      <td align="center">58816272</td>
+      <td align="center">19338835</td>
+      <td align="center">8836</td>
+      <td align="center">52.36</td>
+      <td align="center">53.70</td>
+      <td align="center">51.49</td>
+      <td align="center">52.67</td>
+      <td align="center">47.88</td>
+      <td align="center">49.28</td>
+      <td align="center">306.47</td>
+      <td align="center">293.72</td>
+      <td align="center">312.56</td>
+      <td align="center">316.19</td>
+      <td align="center">299.81</td>
+      <td align="center">303.72</td>
+      <td align="center">9.58</td>
+      <td align="center">72.02</td>
+      <td align="center">5.89</td>
+      <td align="center">9.36</td>
+      <td align="center">2.86</td>
+      <td align="center">41.47</td>
+      <td align="center">0.68</td>
+      <td align="center">0.43</td>
+      <td align="center">0.33</td>
+   </tr>
+ 
+                 
+                    <tr class="odd">
+                  
+                  
+                 
+      <td align="center">TCGA-BH-A0H7-01A</td>
+      <td align="center">HWUSI-EAS577_105608028</td>
+      <td align="center">6</td>
+      <td align="center">23</td>
+      <td align="center">4729</td>
+      <td align="center">910416</td>
+      <td align="center">155198044</td>
+      <td align="center">58114684</td>
+      <td align="center">97083360</td>
+      <td align="center">69091228</td>
+      <td align="center">27722581</td>
+      <td align="center">34733</td>
+      <td align="center">53.68</td>
+      <td align="center">54.69</td>
+      <td align="center">53.08</td>
+      <td align="center">54.32</td>
+      <td align="center">49.97</td>
+      <td align="center">49.30</td>
+      <td align="center">287.57</td>
+      <td align="center">279.86</td>
+      <td align="center">290.96</td>
+      <td align="center">295.94</td>
+      <td align="center">276.61</td>
+      <td align="center">287.64</td>
+      <td align="center">8.04</td>
+      <td align="center">78.37</td>
+      <td align="center">5.08</td>
+      <td align="center">8.04</td>
+      <td align="center">2.71</td>
+      <td align="center">179.60</td>
+      <td align="center">0.77</td>
+      <td align="center">0.45</td>
+      <td align="center">0.36</td>
+   </tr>
+
+</table>
+</div>
+
+<div><h2 id="M200">Distribution</h2>
+
+<p class="centeredImage"><img src="./bamFigure//summary_lines.png"></p>
+
+</div>
+</div>
+
+<div><h2 id="M300">Batch effect</h2>
+<p>The results were separated into different groups by their Instrument, RunNumber, Flowcell and Lane. Then boxplot plots were used to visualize their distribution. Kruskal-Wallis rank sum test and Fligner-Killeen test were performed to see if the distributions and variances in each of the groups are the same</p>
+
+<p class="centeredImage"><img src="./bamFigure//batch_Unmapped.png"></p>
+
+<p class="centeredImage"><img src="./bamFigure//batch_Total Mapped.png"></p>
+
+<p class="centeredImage"><img src="./bamFigure//batch_On-target.png"></p>
+
+<p class="centeredImage"><img src="./bamFigure//batch_Off-target.png"></p>
+
+<p class="centeredImage"><img src="./bamFigure//batch_Off-target-intron.png"></p>
+
+<p class="centeredImage"><img src="./bamFigure//batch_Off-target-intergenic.png"></p>
+
+<p class="centeredImage"><img src="./bamFigure//batch_Off-target-mito.png"></p>
+
+<p class="centeredImage"><img src="./bamFigure//batch_Total Mapped(Mean MQ).png"></p>
+
+<p class="centeredImage"><img src="./bamFigure//batch_On-target(Mean MQ).png"></p>
+
+<p class="centeredImage"><img src="./bamFigure//batch_Off-target(Mean MQ).png"></p>
+
+<p class="centeredImage"><img src="./bamFigure//batch_Off-target-intron(Mean MQ).png"></p>
+
+<p class="centeredImage"><img src="./bamFigure//batch_Off-target-intergenic(Mean MQ).png"></p>
+
+<p class="centeredImage"><img src="./bamFigure//batch_Off-target-mito(Mean MQ).png"></p>
+
+<p class="centeredImage"><img src="./bamFigure//batch_Total Mapped(Mean InsertSize).png"></p>
+
+<p class="centeredImage"><img src="./bamFigure//batch_On-target(Mean InsertSize).png"></p>
+
+<p class="centeredImage"><img src="./bamFigure//batch_Off-target(Mean InsertSize).png"></p>
+
+<p class="centeredImage"><img src="./bamFigure//batch_Off-target-intron(Mean InsertSize).png"></p>
+
+<p class="centeredImage"><img src="./bamFigure//batch_Off-target-intergenic(Mean InsertSize).png"></p>
+
+<p class="centeredImage"><img src="./bamFigure//batch_Off-target-mito(Mean InsertSize).png"></p>
+
+<p class="centeredImage"><img src="./bamFigure//batch_Total Reads(Mean Depth).png"></p>
+
+<p class="centeredImage"><img src="./bamFigure//batch_On-target(Mean Depth).png"></p>
+
+<p class="centeredImage"><img src="./bamFigure//batch_Off-target(Mean Depth).png"></p>
+
+<p class="centeredImage"><img src="./bamFigure//batch_Off-target-intron(Mean Depth).png"></p>
+
+<p class="centeredImage"><img src="./bamFigure//batch_Off-target-intergenic(Mean Depth).png"></p>
+
+<p class="centeredImage"><img src="./bamFigure//batch_Off-target-mito(Mean Depth).png"></p>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,589 @@
+<!-- report.tmpl -->
+<html>
+<head>
+<title>fastaq Report</title>
+<style type="text/css">
+    	.first { background-color: #2894ff; color: #FFFFFF; }
+        .odd  { background-color: #FFFFFF }
+        .even { background-color: #97cbff }
+  pre {
+   	padding: 1em;
+    border: 1px dashed #2f6fab;
+    color: black;
+    background-color: #f9f9f9;
+    line-height: 1.1em;
+    WORD-WRAP: break-word;
+	}
+h2 {
+  color: #800000;
+  padding-bottom: 0;
+  margin-bottom: 0;
+  clear:left;
+  }
+</style>
+
+<style type="text/css">
+    div.summary {
+    width: 18em;
+  }
+   div.summary ul {
+  padding-left:0;
+  list-style-type:none;
+  font-weight:bold;
+  }
+  
+  div.summary ul li img {
+  margin-bottom:-0.5em;
+  margin-top:0.5em;
+  }
+</style>
+
+<style type="text/css">
+  .centeredImage
+    {
+    text-align:center;
+    margin-top:0px;
+    margin-bottom:0px;
+    padding:0px;
+    }
+</style>
+
+</head>
+<body>
+<h1>fastq Report</h1><div class="summary">
+    <h2>Table of Contents</h2>
+        <ul>
+<li><a href=#M100>Command</a></li>
+<li><a href=#M200>Result Table</a></li>
+<li><a href=#M200>Sequence quality and content</a></li>
+<li><a href=#M300>Batch effect</a></li>        </ul>
+</div>
+
+<div><h2 id="M100">Command</h2>
+<p>The report was generated at Wed Jan 22 14:00:54 2014. Here is your command for generating this report, keep it in order to reproduce the result.</p>
+<pre>perl /home/zhaos/source/perl_cqs/software_QC/RC2/qc3.pl -m f -t 11 -i 11fastq.list -o ../../../brca11Sample_fastq_result</pre>
+</div>
+
+<div><h2 id="M200">Result Table</h2>
+<p>Column description</p>
+<pre>
+TotalReads: Total reads in fastq file
+Reads(Y) or (N): Y if the read fails filter (read is bad), N otherwise
+BQ: base quality score
+GC: GC content
+</pre>
+<table align="center" style="border:#2894ff 1px solid;">
+ 
+                 <tr class="first">
+                  
+                 
+      <td align="center">#Sample</td>
+      <td align="center">Instrument</td>
+      <td align="center">RunNumber</td>
+      <td align="center">Flowcell</td>
+      <td align="center">Lane</td>
+      <td align="center">TotalReads</td>
+      <td align="center">Reads(Y)</td>
+      <td align="center">Reads(N)</td>
+      <td align="center">BQ</td>
+      <td align="center">BQ(Y)</td>
+      <td align="center">BQ(N)</td>
+      <td align="center">GC</td>
+      <td align="center">GC(Y)</td>
+      <td align="center">GC(N)</td>
+   </tr>
+ 
+                 
+                    <tr class="odd">
+                  
+                  
+                 
+      <td align="center">TCGA-A7-A0D9-01A.1.fastq.gz</td>
+      <td align="center">HWUSI-EAS1612_105608784</td>
+      <td align="center">None</td>
+      <td align="center">None</td>
+      <td align="center">1</td>
+      <td align="center">69562581</td>
+      <td align="center">0</td>
+      <td align="center">69562581</td>
+      <td align="center">37.66</td>
+      <td align="center">NA</td>
+      <td align="center">37.66</td>
+      <td align="center">0.43</td>
+      <td align="center">NA</td>
+      <td align="center">0.43</td>
+   </tr>
+ 
+                 
+                    <tr class="even">
+                  
+                  
+                 
+      <td align="center">TCGA-A7-A0D9-01A.2.fastq.gz</td>
+      <td align="center">HWUSI-EAS1612_105608784</td>
+      <td align="center">None</td>
+      <td align="center">None</td>
+      <td align="center">1</td>
+      <td align="center">69562581</td>
+      <td align="center">0</td>
+      <td align="center">69562581</td>
+      <td align="center">36.41</td>
+      <td align="center">NA</td>
+      <td align="center">36.41</td>
+      <td align="center">0.43</td>
+      <td align="center">NA</td>
+      <td align="center">0.43</td>
+   </tr>
+ 
+                 
+                    <tr class="odd">
+                  
+                  
+                 
+      <td align="center">TCGA-BH-A0B3-01A.1.fastq.gz</td>
+      <td align="center">HWUSI-EAS635_105799830</td>
+      <td align="center">None</td>
+      <td align="center">None</td>
+      <td align="center">7</td>
+      <td align="center">80289992</td>
+      <td align="center">0</td>
+      <td align="center">80289992</td>
+      <td align="center">35.47</td>
+      <td align="center">NA</td>
+      <td align="center">35.47</td>
+      <td align="center">0.45</td>
+      <td align="center">NA</td>
+      <td align="center">0.45</td>
+   </tr>
+ 
+                 
+                    <tr class="even">
+                  
+                  
+                 
+      <td align="center">TCGA-BH-A0B3-01A.2.fastq.gz</td>
+      <td align="center">HWUSI-EAS635_105799830</td>
+      <td align="center">None</td>
+      <td align="center">None</td>
+      <td align="center">7</td>
+      <td align="center">80289992</td>
+      <td align="center">0</td>
+      <td align="center">80289992</td>
+      <td align="center">34.71</td>
+      <td align="center">NA</td>
+      <td align="center">34.71</td>
+      <td align="center">0.45</td>
+      <td align="center">NA</td>
+      <td align="center">0.45</td>
+   </tr>
+ 
+                 
+                    <tr class="odd">
+                  
+                  
+                 
+      <td align="center">TCGA-BH-A0B8-01A.1.fastq.gz</td>
+      <td align="center">HWUSI-EAS1625_105908207</td>
+      <td align="center">None</td>
+      <td align="center">None</td>
+      <td align="center">4</td>
+      <td align="center">108812296</td>
+      <td align="center">0</td>
+      <td align="center">108812296</td>
+      <td align="center">36.61</td>
+      <td align="center">NA</td>
+      <td align="center">36.61</td>
+      <td align="center">0.43</td>
+      <td align="center">NA</td>
+      <td align="center">0.43</td>
+   </tr>
+ 
+                 
+                    <tr class="even">
+                  
+                  
+                 
+      <td align="center">TCGA-BH-A0B8-01A.2.fastq.gz</td>
+      <td align="center">HWUSI-EAS1625_105908207</td>
+      <td align="center">None</td>
+      <td align="center">None</td>
+      <td align="center">4</td>
+      <td align="center">108812296</td>
+      <td align="center">0</td>
+      <td align="center">108812296</td>
+      <td align="center">35.44</td>
+      <td align="center">NA</td>
+      <td align="center">35.44</td>
+      <td align="center">0.43</td>
+      <td align="center">NA</td>
+      <td align="center">0.43</td>
+   </tr>
+ 
+                 
+                    <tr class="odd">
+                  
+                  
+                 
+      <td align="center">TCGA-BH-A0BJ-01A.1.fastq.gz</td>
+      <td align="center">HWUSI-EAS574_105716864</td>
+      <td align="center">None</td>
+      <td align="center">None</td>
+      <td align="center">7</td>
+      <td align="center">72158704</td>
+      <td align="center">0</td>
+      <td align="center">72158704</td>
+      <td align="center">37.55</td>
+      <td align="center">NA</td>
+      <td align="center">37.55</td>
+      <td align="center">0.44</td>
+      <td align="center">NA</td>
+      <td align="center">0.44</td>
+   </tr>
+ 
+                 
+                    <tr class="even">
+                  
+                  
+                 
+      <td align="center">TCGA-BH-A0BJ-01A.2.fastq.gz</td>
+      <td align="center">HWUSI-EAS574_105716864</td>
+      <td align="center">None</td>
+      <td align="center">None</td>
+      <td align="center">7</td>
+      <td align="center">72158704</td>
+      <td align="center">0</td>
+      <td align="center">72158704</td>
+      <td align="center">36.30</td>
+      <td align="center">NA</td>
+      <td align="center">36.30</td>
+      <td align="center">0.44</td>
+      <td align="center">NA</td>
+      <td align="center">0.44</td>
+   </tr>
+ 
+                 
+                    <tr class="odd">
+                  
+                  
+                 
+      <td align="center">TCGA-BH-A0BM-01A.1.fastq.gz</td>
+      <td align="center">HWUSI-EAS404_105730715</td>
+      <td align="center">None</td>
+      <td align="center">None</td>
+      <td align="center">4</td>
+      <td align="center">59977483</td>
+      <td align="center">0</td>
+      <td align="center">59977483</td>
+      <td align="center">37.14</td>
+      <td align="center">NA</td>
+      <td align="center">37.14</td>
+      <td align="center">0.43</td>
+      <td align="center">NA</td>
+      <td align="center">0.43</td>
+   </tr>
+ 
+                 
+                    <tr class="even">
+                  
+                  
+                 
+      <td align="center">TCGA-BH-A0BM-01A.2.fastq.gz</td>
+      <td align="center">HWUSI-EAS404_105730715</td>
+      <td align="center">None</td>
+      <td align="center">None</td>
+      <td align="center">4</td>
+      <td align="center">59977483</td>
+      <td align="center">0</td>
+      <td align="center">59977483</td>
+      <td align="center">36.66</td>
+      <td align="center">NA</td>
+      <td align="center">36.66</td>
+      <td align="center">0.43</td>
+      <td align="center">NA</td>
+      <td align="center">0.43</td>
+   </tr>
+ 
+                 
+                    <tr class="odd">
+                  
+                  
+                 
+      <td align="center">TCGA-BH-A0C0-01A.1.fastq.gz</td>
+      <td align="center">HWUSI-EAS631_105608339</td>
+      <td align="center">None</td>
+      <td align="center">None</td>
+      <td align="center">4</td>
+      <td align="center">72085356</td>
+      <td align="center">0</td>
+      <td align="center">72085356</td>
+      <td align="center">35.68</td>
+      <td align="center">NA</td>
+      <td align="center">35.68</td>
+      <td align="center">0.43</td>
+      <td align="center">NA</td>
+      <td align="center">0.43</td>
+   </tr>
+ 
+                 
+                    <tr class="even">
+                  
+                  
+                 
+      <td align="center">TCGA-BH-A0C0-01A.2.fastq.gz</td>
+      <td align="center">HWUSI-EAS631_105608339</td>
+      <td align="center">None</td>
+      <td align="center">None</td>
+      <td align="center">4</td>
+      <td align="center">72085356</td>
+      <td align="center">0</td>
+      <td align="center">72085356</td>
+      <td align="center">35.07</td>
+      <td align="center">NA</td>
+      <td align="center">35.07</td>
+      <td align="center">0.43</td>
+      <td align="center">NA</td>
+      <td align="center">0.43</td>
+   </tr>
+ 
+                 
+                    <tr class="odd">
+                  
+                  
+                 
+      <td align="center">TCGA-BH-A0DK-01A.1.fastq.gz</td>
+      <td align="center">HWUSI-EAS577_105764015</td>
+      <td align="center">None</td>
+      <td align="center">None</td>
+      <td align="center">2</td>
+      <td align="center">89604345</td>
+      <td align="center">0</td>
+      <td align="center">89604345</td>
+      <td align="center">37.12</td>
+      <td align="center">NA</td>
+      <td align="center">37.12</td>
+      <td align="center">0.43</td>
+      <td align="center">NA</td>
+      <td align="center">0.43</td>
+   </tr>
+ 
+                 
+                    <tr class="even">
+                  
+                  
+                 
+      <td align="center">TCGA-BH-A0DK-01A.2.fastq.gz</td>
+      <td align="center">HWUSI-EAS577_105764015</td>
+      <td align="center">None</td>
+      <td align="center">None</td>
+      <td align="center">2</td>
+      <td align="center">89604345</td>
+      <td align="center">0</td>
+      <td align="center">89604345</td>
+      <td align="center">35.71</td>
+      <td align="center">NA</td>
+      <td align="center">35.71</td>
+      <td align="center">0.43</td>
+      <td align="center">NA</td>
+      <td align="center">0.43</td>
+   </tr>
+ 
+                 
+                    <tr class="odd">
+                  
+                  
+                 
+      <td align="center">TCGA-BH-A0DP-01A.1.fastq.gz</td>
+      <td align="center">HWI-EAS97_105698468</td>
+      <td align="center">None</td>
+      <td align="center">None</td>
+      <td align="center">7</td>
+      <td align="center">84464176</td>
+      <td align="center">0</td>
+      <td align="center">84464176</td>
+      <td align="center">34.99</td>
+      <td align="center">NA</td>
+      <td align="center">34.99</td>
+      <td align="center">0.44</td>
+      <td align="center">NA</td>
+      <td align="center">0.44</td>
+   </tr>
+ 
+                 
+                    <tr class="even">
+                  
+                  
+                 
+      <td align="center">TCGA-BH-A0DP-01A.2.fastq.gz</td>
+      <td align="center">HWI-EAS97_105698468</td>
+      <td align="center">None</td>
+      <td align="center">None</td>
+      <td align="center">7</td>
+      <td align="center">84464176</td>
+      <td align="center">0</td>
+      <td align="center">84464176</td>
+      <td align="center">35.52</td>
+      <td align="center">NA</td>
+      <td align="center">35.52</td>
+      <td align="center">0.44</td>
+      <td align="center">NA</td>
+      <td align="center">0.44</td>
+   </tr>
+ 
+                 
+                    <tr class="odd">
+                  
+                  
+                 
+      <td align="center">TCGA-BH-A0DP-10A.1.fastq.gz</td>
+      <td align="center">HWI-EAS97_105698468</td>
+      <td align="center">None</td>
+      <td align="center">None</td>
+      <td align="center">4</td>
+      <td align="center">79229235</td>
+      <td align="center">0</td>
+      <td align="center">79229235</td>
+      <td align="center">35.02</td>
+      <td align="center">NA</td>
+      <td align="center">35.02</td>
+      <td align="center">0.43</td>
+      <td align="center">NA</td>
+      <td align="center">0.43</td>
+   </tr>
+ 
+                 
+                    <tr class="even">
+                  
+                  
+                 
+      <td align="center">TCGA-BH-A0DP-10A.2.fastq.gz</td>
+      <td align="center">HWI-EAS97_105698468</td>
+      <td align="center">None</td>
+      <td align="center">None</td>
+      <td align="center">4</td>
+      <td align="center">79229235</td>
+      <td align="center">0</td>
+      <td align="center">79229235</td>
+      <td align="center">35.92</td>
+      <td align="center">NA</td>
+      <td align="center">35.92</td>
+      <td align="center">0.43</td>
+      <td align="center">NA</td>
+      <td align="center">0.43</td>
+   </tr>
+ 
+                 
+                    <tr class="odd">
+                  
+                  
+                 
+      <td align="center">TCGA-BH-A0E0-01A.1.fastq.gz</td>
+      <td align="center">HWUSI-EAS677_105571333</td>
+      <td align="center">None</td>
+      <td align="center">None</td>
+      <td align="center">1</td>
+      <td align="center">65758270</td>
+      <td align="center">0</td>
+      <td align="center">65758270</td>
+      <td align="center">37.22</td>
+      <td align="center">NA</td>
+      <td align="center">37.22</td>
+      <td align="center">0.43</td>
+      <td align="center">NA</td>
+      <td align="center">0.43</td>
+   </tr>
+ 
+                 
+                    <tr class="even">
+                  
+                  
+                 
+      <td align="center">TCGA-BH-A0E0-01A.2.fastq.gz</td>
+      <td align="center">HWUSI-EAS677_105571333</td>
+      <td align="center">None</td>
+      <td align="center">None</td>
+      <td align="center">1</td>
+      <td align="center">65758270</td>
+      <td align="center">0</td>
+      <td align="center">65758270</td>
+      <td align="center">36.57</td>
+      <td align="center">NA</td>
+      <td align="center">36.57</td>
+      <td align="center">0.43</td>
+      <td align="center">NA</td>
+      <td align="center">0.43</td>
+   </tr>
+ 
+                 
+                    <tr class="odd">
+                  
+                  
+                 
+      <td align="center">TCGA-BH-A0H7-01A.1.fastq.gz</td>
+      <td align="center">HWUSI-EAS577_105608028</td>
+      <td align="center">None</td>
+      <td align="center">None</td>
+      <td align="center">4</td>
+      <td align="center">78712747</td>
+      <td align="center">0</td>
+      <td align="center">78712747</td>
+      <td align="center">37.51</td>
+      <td align="center">NA</td>
+      <td align="center">37.51</td>
+      <td align="center">0.43</td>
+      <td align="center">NA</td>
+      <td align="center">0.43</td>
+   </tr>
+ 
+                 
+                    <tr class="even">
+                  
+                  
+                 
+      <td align="center">TCGA-BH-A0H7-01A.2.fastq.gz</td>
+      <td align="center">HWUSI-EAS577_105608028</td>
+      <td align="center">None</td>
+      <td align="center">None</td>
+      <td align="center">4</td>
+      <td align="center">78712747</td>
+      <td align="center">0</td>
+      <td align="center">78712747</td>
+      <td align="center">36.69</td>
+      <td align="center">NA</td>
+      <td align="center">36.69</td>
+      <td align="center">0.43</td>
+      <td align="center">NA</td>
+      <td align="center">0.43</td>
+   </tr>
+
+</table>
+</div>
+
+<div><h2 id="M200">Sequence quality and content</h2>
+<p>Per base sequence quality. N means only keep the reads that didn't fail filter. If the data was pair-end, pearson correlation coefficient and euclidean distance between data from two ends will be calculated and displayed.</p>
+<p class="centeredImage"><img src="./fastqFigure/fastqScoreYN.png.legend.png"></p>
+<p class="centeredImage"><img src="./fastqFigure/fastqScoreYN.png"></p>
+<p>Per base sequence content. N means only keep the reads that didn't fail filter. The standard deviation of per base sequence content (except the top 10 bases) for A, T, C, G will be calculated respectively and the median standard deviation will be displayed.</p>
+<p class="centeredImage"><img src="./fastqFigure/nucPercentyYN.png"></p>
+</div>
+
+<div><h2 id="M300">Batch effect</h2>
+<p>The results were separated into different groups by their Instrument, RunNumber, Flowcell and Lane. Then boxplot plots were used to visualize their distribution. Kruskal-Wallis rank sum test and Fligner-Killeen test were performed to see if the distributions and variances in each of the groups are the same</p>
+
+<p class="centeredImage"><img src="./fastqFigure//batch_TotalReads.png"></p>
+
+<p class="centeredImage"><img src="./fastqFigure//batch_Reads(Y).png"></p>
+
+<p class="centeredImage"><img src="./fastqFigure//batch_Reads(N).png"></p>
+
+<p class="centeredImage"><img src="./fastqFigure//batch_BQ.png"></p>
+
+<p class="centeredImage"><img src="./fastqFigure//batch_BQ(N).png"></p>
+
+<p class="centeredImage"><img src="./fastqFigure//batch_GC.png"></p>
+
+<p class="centeredImage"><img src="./fastqFigure//batch_GC(N).png"></p>
+
+</div>
+
+</body>
+</html>

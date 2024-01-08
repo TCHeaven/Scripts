@@ -1,0 +1,2020 @@
+<!-- report.tmpl -->
+<html>
+<head>
+<title>vcf Report</title>
+<style type="text/css">
+    	.first { background-color: #2894ff; color: #FFFFFF; }
+        .odd  { background-color: #FFFFFF }
+        .even { background-color: #97cbff }
+  pre {
+   	padding: 1em;
+    border: 1px dashed #2f6fab;
+    color: black;
+    background-color: #f9f9f9;
+    line-height: 1.1em;
+    WORD-WRAP: break-word;
+	}
+h2 {
+  color: #800000;
+  padding-bottom: 0;
+  margin-bottom: 0;
+  clear:left;
+  }
+</style>
+
+<style type="text/css">
+    div.summary {
+    width: 18em;
+  }
+   div.summary ul {
+  padding-left:0;
+  list-style-type:none;
+  font-weight:bold;
+  }
+  
+  div.summary ul li img {
+  margin-bottom:-0.5em;
+  margin-top:0.5em;
+  }
+</style>
+
+<style type="text/css">
+  .centeredImage
+    {
+    text-align:center;
+    margin-top:0px;
+    margin-bottom:0px;
+    padding:0px;
+    }
+</style>
+
+</head>
+<body>
+<h1>VCF Report</h1><div class="summary">
+    <h2>Table of Contents</h2>
+        <ul>
+<li><a href=#M100>Command</a></li>
+<li><a href=#M150>Filter</a></li>
+<li><a href=#M200>Statistics</a></li>
+<li><a href=#M300>Consistency</a></li>
+<li><a href=#M350>SNP count</a></li>
+<li><a href=#M400>Score</a></li>
+<li><a href=#M500>Annovar annotation</a></li>        </ul>
+</div>
+<div><h2 id="M100">Command</h2>
+<p>The report was generated at Mon Jan 20 11:37:58 2014. Here is your command for generating this report, keep it in order to reproduce the result.</p>
+<pre>perl /home/zhaos/source/perl_cqs/software_QC/RC2/qc3.pl -m v -i BRCA11_snp_filtered.pass.vcf -a /scratch/cqs/zhaos/QC/RC2/annovarDatabase/humandb/ -o brca11Sample_vcf_result -rp</pre>
+</div>
+<div><h2 id="M150">Filter</h2>
+<p>The arguments in /home/zhaos/source/perl_cqs/software_QC/RC2/GATK.cfg were used for the filter of vcf files. The file content was listed below:
+<pre>#config file for GATK VariantFiltration
+#only >, <, ==, >=, <= could be used
+#the mutation will be discarded if it satisfies any of the following criteria
+QD<2
+MQ<40
+FS>60
+HaplotypeScore>13
+MQRankSum<-12.5
+ReadPosRankSum<-8
+</pre>
+</div>
+<div><h2 id="M200">Statistics</h2>
+<table align="center" style="border:#2894ff 1px solid;">
+ 
+                 <tr class="first">
+                  
+                 
+      <td align="center">Sample</td>
+      <td align="center">Transitions:Transversions (Based on all SNPs)</td>
+      <td align="center">Heterozygous:Non-reference homozygous (Based on all SNPs)</td>
+      <td align="center">Transitions:Transversions (After filter)</td>
+      <td align="center">Heterozygous:Non-reference homozygous (After filter)</td>
+   </tr>
+ 
+                 
+                    <tr class="odd">
+                  
+                  
+                 
+      <td align="center">TCGA-A7-A0D9-01A</td>
+      <td align="center">2.12</td>
+      <td align="center">0.28</td>
+      <td align="center">2.12</td>
+      <td align="center">0.28</td>
+   </tr>
+ 
+                 
+                    <tr class="even">
+                  
+                  
+                 
+      <td align="center">TCGA-BH-A0B3-01A</td>
+      <td align="center">2.15</td>
+      <td align="center">0.28</td>
+      <td align="center">2.15</td>
+      <td align="center">0.28</td>
+   </tr>
+ 
+                 
+                    <tr class="odd">
+                  
+                  
+                 
+      <td align="center">TCGA-BH-A0B8-01A</td>
+      <td align="center">2.09</td>
+      <td align="center">0.31</td>
+      <td align="center">2.09</td>
+      <td align="center">0.31</td>
+   </tr>
+ 
+                 
+                    <tr class="even">
+                  
+                  
+                 
+      <td align="center">TCGA-BH-A0BJ-01A</td>
+      <td align="center">2.10</td>
+      <td align="center">0.32</td>
+      <td align="center">2.10</td>
+      <td align="center">0.32</td>
+   </tr>
+ 
+                 
+                    <tr class="odd">
+                  
+                  
+                 
+      <td align="center">TCGA-BH-A0BM-01A</td>
+      <td align="center">2.11</td>
+      <td align="center">0.29</td>
+      <td align="center">2.11</td>
+      <td align="center">0.29</td>
+   </tr>
+ 
+                 
+                    <tr class="even">
+                  
+                  
+                 
+      <td align="center">TCGA-BH-A0C0-01A</td>
+      <td align="center">2.14</td>
+      <td align="center">0.28</td>
+      <td align="center">2.14</td>
+      <td align="center">0.28</td>
+   </tr>
+ 
+                 
+                    <tr class="odd">
+                  
+                  
+                 
+      <td align="center">TCGA-BH-A0DK-01A</td>
+      <td align="center">2.07</td>
+      <td align="center">0.39</td>
+      <td align="center">2.07</td>
+      <td align="center">0.39</td>
+   </tr>
+ 
+                 
+                    <tr class="even">
+                  
+                  
+                 
+      <td align="center">TCGA-BH-A0DP-01A</td>
+      <td align="center">2.12</td>
+      <td align="center">0.29</td>
+      <td align="center">2.12</td>
+      <td align="center">0.29</td>
+   </tr>
+ 
+                 
+                    <tr class="odd">
+                  
+                  
+                 
+      <td align="center">TCGA-BH-A0DP-10A</td>
+      <td align="center">2.08</td>
+      <td align="center">0.31</td>
+      <td align="center">2.08</td>
+      <td align="center">0.31</td>
+   </tr>
+ 
+                 
+                    <tr class="even">
+                  
+                  
+                 
+      <td align="center">TCGA-BH-A0E0-01A</td>
+      <td align="center">2.10</td>
+      <td align="center">0.26</td>
+      <td align="center">2.10</td>
+      <td align="center">0.26</td>
+   </tr>
+ 
+                 
+                    <tr class="odd">
+                  
+                  
+                 
+      <td align="center">TCGA-BH-A0H7-01A</td>
+      <td align="center">2.06</td>
+      <td align="center">0.29</td>
+      <td align="center">2.06</td>
+      <td align="center">0.29</td>
+   </tr>
+
+</table>
+<p class="centeredImage"><img src="./vcfFigure/BRCA11_snp_filtered.pass.vcf.sampleNumber.png"></p>
+</div>
+<div><h2 id="M300">Consistency</h2>
+<p>Result table</p>
+<p>Column description</p>
+<pre>
+CountA: Number of heterozygous genotypes in Sample B (denominator)
+CountB2A: Number of genotypes in sample A that have consistent heterozygous genotype comparing to Sample B (numerator)
+CountB: Number of heterozygous genotypes in Sample A (denominator)
+CountA2B: Number of genotypes in sample B that have consistent heterozygous genotype comparing to Sample A (numerator)
+</pre>
+<table align="center" style="border:#2894ff 1px solid;">
+ 
+                 <tr class="first">
+                  
+                 
+      <td align="center">SampleA</td>
+      <td align="center">SampleB</td>
+      <td align="center">CountB2A</td>
+      <td align="center">CountA</td>
+      <td align="center">Heterozygous Consistency (CountB2A:CountA)</td>
+      <td align="center">CountA2B</td>
+      <td align="center">CountB</td>
+      <td align="center">Heterozygous Consistency (CountA2B:CountB)</td>
+      <td align="center">Overall Consistent Genotypes</td>
+      <td align="center">Overall Overlapped Genotypes</td>
+      <td align="center">Overall Consistency</td>
+   </tr>
+ 
+                 
+                    <tr class="odd">
+                  
+                  
+                 
+      <td align="center">TCGA-A7-A0D9-01A</td>
+      <td align="center">TCGA-BH-A0B3-01A</td>
+      <td align="center">21585</td>
+      <td align="center">59620</td>
+      <td align="center">0.36</td>
+      <td align="center">21585</td>
+      <td align="center">60354</td>
+      <td align="center">0.36</td>
+      <td align="center">124941</td>
+      <td align="center">212189</td>
+      <td align="center">0.59</td>
+   </tr>
+ 
+                 
+                    <tr class="even">
+                  
+                  
+                 
+      <td align="center">TCGA-A7-A0D9-01A</td>
+      <td align="center">TCGA-BH-A0B8-01A</td>
+      <td align="center">21413</td>
+      <td align="center">62471</td>
+      <td align="center">0.34</td>
+      <td align="center">21413</td>
+      <td align="center">59392</td>
+      <td align="center">0.36</td>
+      <td align="center">130688</td>
+      <td align="center">221535</td>
+      <td align="center">0.59</td>
+   </tr>
+ 
+                 
+                    <tr class="odd">
+                  
+                  
+                 
+      <td align="center">TCGA-A7-A0D9-01A</td>
+      <td align="center">TCGA-BH-A0BJ-01A</td>
+      <td align="center">22316</td>
+      <td align="center">60644</td>
+      <td align="center">0.37</td>
+      <td align="center">22316</td>
+      <td align="center">63090</td>
+      <td align="center">0.35</td>
+      <td align="center">126240</td>
+      <td align="center">215181</td>
+      <td align="center">0.59</td>
+   </tr>
+ 
+                 
+                    <tr class="even">
+                  
+                  
+                 
+      <td align="center">TCGA-A7-A0D9-01A</td>
+      <td align="center">TCGA-BH-A0BM-01A</td>
+      <td align="center">21074</td>
+      <td align="center">56510</td>
+      <td align="center">0.37</td>
+      <td align="center">21074</td>
+      <td align="center">58181</td>
+      <td align="center">0.36</td>
+      <td align="center">119646</td>
+      <td align="center">201674</td>
+      <td align="center">0.59</td>
+   </tr>
+ 
+                 
+                    <tr class="odd">
+                  
+                  
+                 
+      <td align="center">TCGA-A7-A0D9-01A</td>
+      <td align="center">TCGA-BH-A0C0-01A</td>
+      <td align="center">21875</td>
+      <td align="center">59630</td>
+      <td align="center">0.37</td>
+      <td align="center">21875</td>
+      <td align="center">61684</td>
+      <td align="center">0.35</td>
+      <td align="center">124781</td>
+      <td align="center">212631</td>
+      <td align="center">0.59</td>
+   </tr>
+ 
+                 
+                    <tr class="even">
+                  
+                  
+                 
+      <td align="center">TCGA-A7-A0D9-01A</td>
+      <td align="center">TCGA-BH-A0DK-01A</td>
+      <td align="center">21260</td>
+      <td align="center">58413</td>
+      <td align="center">0.36</td>
+      <td align="center">21260</td>
+      <td align="center">59200</td>
+      <td align="center">0.36</td>
+      <td align="center">122843</td>
+      <td align="center">207712</td>
+      <td align="center">0.59</td>
+   </tr>
+ 
+                 
+                    <tr class="odd">
+                  
+                  
+                 
+      <td align="center">TCGA-A7-A0D9-01A</td>
+      <td align="center">TCGA-BH-A0DP-01A</td>
+      <td align="center">22745</td>
+      <td align="center">61037</td>
+      <td align="center">0.37</td>
+      <td align="center">22745</td>
+      <td align="center">62202</td>
+      <td align="center">0.37</td>
+      <td align="center">128987</td>
+      <td align="center">217122</td>
+      <td align="center">0.59</td>
+   </tr>
+ 
+                 
+                    <tr class="even">
+                  
+                  
+                 
+      <td align="center">TCGA-A7-A0D9-01A</td>
+      <td align="center">TCGA-BH-A0DP-10A</td>
+      <td align="center">23323</td>
+      <td align="center">62579</td>
+      <td align="center">0.37</td>
+      <td align="center">23323</td>
+      <td align="center">63600</td>
+      <td align="center">0.37</td>
+      <td align="center">131546</td>
+      <td align="center">221662</td>
+      <td align="center">0.59</td>
+   </tr>
+ 
+                 
+                    <tr class="odd">
+                  
+                  
+                 
+      <td align="center">TCGA-A7-A0D9-01A</td>
+      <td align="center">TCGA-BH-A0E0-01A</td>
+      <td align="center">20792</td>
+      <td align="center">58412</td>
+      <td align="center">0.36</td>
+      <td align="center">20792</td>
+      <td align="center">57407</td>
+      <td align="center">0.36</td>
+      <td align="center">124147</td>
+      <td align="center">208576</td>
+      <td align="center">0.60</td>
+   </tr>
+ 
+                 
+                    <tr class="even">
+                  
+                  
+                 
+      <td align="center">TCGA-A7-A0D9-01A</td>
+      <td align="center">TCGA-BH-A0H7-01A</td>
+      <td align="center">21504</td>
+      <td align="center">61136</td>
+      <td align="center">0.35</td>
+      <td align="center">21504</td>
+      <td align="center">59723</td>
+      <td align="center">0.36</td>
+      <td align="center">127513</td>
+      <td align="center">217263</td>
+      <td align="center">0.59</td>
+   </tr>
+ 
+                 
+                    <tr class="odd">
+                  
+                  
+                 
+      <td align="center">TCGA-BH-A0B3-01A</td>
+      <td align="center">TCGA-BH-A0B8-01A</td>
+      <td align="center">22946</td>
+      <td align="center">64549</td>
+      <td align="center">0.36</td>
+      <td align="center">22946</td>
+      <td align="center">60590</td>
+      <td align="center">0.38</td>
+      <td align="center">133388</td>
+      <td align="center">224638</td>
+      <td align="center">0.59</td>
+   </tr>
+ 
+                 
+                    <tr class="even">
+                  
+                  
+                 
+      <td align="center">TCGA-BH-A0B3-01A</td>
+      <td align="center">TCGA-BH-A0BJ-01A</td>
+      <td align="center">23355</td>
+      <td align="center">61348</td>
+      <td align="center">0.38</td>
+      <td align="center">23355</td>
+      <td align="center">63117</td>
+      <td align="center">0.37</td>
+      <td align="center">126615</td>
+      <td align="center">214527</td>
+      <td align="center">0.59</td>
+   </tr>
+ 
+                 
+                    <tr class="odd">
+                  
+                  
+                 
+      <td align="center">TCGA-BH-A0B3-01A</td>
+      <td align="center">TCGA-BH-A0BM-01A</td>
+      <td align="center">20891</td>
+      <td align="center">55863</td>
+      <td align="center">0.37</td>
+      <td align="center">20891</td>
+      <td align="center">56833</td>
+      <td align="center">0.37</td>
+      <td align="center">117136</td>
+      <td align="center">197355</td>
+      <td align="center">0.59</td>
+   </tr>
+ 
+                 
+                    <tr class="even">
+                  
+                  
+                 
+      <td align="center">TCGA-BH-A0B3-01A</td>
+      <td align="center">TCGA-BH-A0C0-01A</td>
+      <td align="center">22110</td>
+      <td align="center">60487</td>
+      <td align="center">0.37</td>
+      <td align="center">22110</td>
+      <td align="center">61842</td>
+      <td align="center">0.36</td>
+      <td align="center">124709</td>
+      <td align="center">213167</td>
+      <td align="center">0.59</td>
+   </tr>
+ 
+                 
+                    <tr class="odd">
+                  
+                  
+                 
+      <td align="center">TCGA-BH-A0B3-01A</td>
+      <td align="center">TCGA-BH-A0DK-01A</td>
+      <td align="center">23003</td>
+      <td align="center">61463</td>
+      <td align="center">0.37</td>
+      <td align="center">23003</td>
+      <td align="center">61600</td>
+      <td align="center">0.37</td>
+      <td align="center">126558</td>
+      <td align="center">213666</td>
+      <td align="center">0.59</td>
+   </tr>
+ 
+                 
+                    <tr class="even">
+                  
+                  
+                 
+      <td align="center">TCGA-BH-A0B3-01A</td>
+      <td align="center">TCGA-BH-A0DP-01A</td>
+      <td align="center">22313</td>
+      <td align="center">60508</td>
+      <td align="center">0.37</td>
+      <td align="center">22313</td>
+      <td align="center">60928</td>
+      <td align="center">0.37</td>
+      <td align="center">126057</td>
+      <td align="center">212704</td>
+      <td align="center">0.59</td>
+   </tr>
+ 
+                 
+                    <tr class="odd">
+                  
+                  
+                 
+      <td align="center">TCGA-BH-A0B3-01A</td>
+      <td align="center">TCGA-BH-A0DP-10A</td>
+      <td align="center">22786</td>
+      <td align="center">61569</td>
+      <td align="center">0.37</td>
+      <td align="center">22786</td>
+      <td align="center">61942</td>
+      <td align="center">0.37</td>
+      <td align="center">128195</td>
+      <td align="center">216137</td>
+      <td align="center">0.59</td>
+   </tr>
+ 
+                 
+                    <tr class="even">
+                  
+                  
+                 
+      <td align="center">TCGA-BH-A0B3-01A</td>
+      <td align="center">TCGA-BH-A0E0-01A</td>
+      <td align="center">20558</td>
+      <td align="center">58057</td>
+      <td align="center">0.35</td>
+      <td align="center">20558</td>
+      <td align="center">56091</td>
+      <td align="center">0.37</td>
+      <td align="center">121552</td>
+      <td align="center">204400</td>
+      <td align="center">0.59</td>
+   </tr>
+ 
+                 
+                    <tr class="odd">
+                  
+                  
+                 
+      <td align="center">TCGA-BH-A0B3-01A</td>
+      <td align="center">TCGA-BH-A0H7-01A</td>
+      <td align="center">21561</td>
+      <td align="center">60640</td>
+      <td align="center">0.36</td>
+      <td align="center">21561</td>
+      <td align="center">58449</td>
+      <td align="center">0.37</td>
+      <td align="center">125515</td>
+      <td align="center">212917</td>
+      <td align="center">0.59</td>
+   </tr>
+ 
+                 
+                    <tr class="even">
+                  
+                  
+                 
+      <td align="center">TCGA-BH-A0B8-01A</td>
+      <td align="center">TCGA-BH-A0BJ-01A</td>
+      <td align="center">23322</td>
+      <td align="center">61007</td>
+      <td align="center">0.38</td>
+      <td align="center">23322</td>
+      <td align="center">66680</td>
+      <td align="center">0.35</td>
+      <td align="center">132233</td>
+      <td align="center">225115</td>
+      <td align="center">0.59</td>
+   </tr>
+ 
+                 
+                    <tr class="odd">
+                  
+                  
+                 
+      <td align="center">TCGA-BH-A0B8-01A</td>
+      <td align="center">TCGA-BH-A0BM-01A</td>
+      <td align="center">20910</td>
+      <td align="center">54812</td>
+      <td align="center">0.38</td>
+      <td align="center">20910</td>
+      <td align="center">59676</td>
+      <td align="center">0.35</td>
+      <td align="center">121735</td>
+      <td align="center">205602</td>
+      <td align="center">0.59</td>
+   </tr>
+ 
+                 
+                    <tr class="even">
+                  
+                  
+                 
+      <td align="center">TCGA-BH-A0B8-01A</td>
+      <td align="center">TCGA-BH-A0C0-01A</td>
+      <td align="center">21833</td>
+      <td align="center">58723</td>
+      <td align="center">0.37</td>
+      <td align="center">21833</td>
+      <td align="center">64132</td>
+      <td align="center">0.34</td>
+      <td align="center">129038</td>
+      <td align="center">220286</td>
+      <td align="center">0.59</td>
+   </tr>
+ 
+                 
+                    <tr class="odd">
+                  
+                  
+                 
+      <td align="center">TCGA-BH-A0B8-01A</td>
+      <td align="center">TCGA-BH-A0DK-01A</td>
+      <td align="center">23089</td>
+      <td align="center">60425</td>
+      <td align="center">0.38</td>
+      <td align="center">23089</td>
+      <td align="center">64537</td>
+      <td align="center">0.36</td>
+      <td align="center">131561</td>
+      <td align="center">222143</td>
+      <td align="center">0.59</td>
+   </tr>
+ 
+                 
+                    <tr class="even">
+                  
+                  
+                 
+      <td align="center">TCGA-BH-A0B8-01A</td>
+      <td align="center">TCGA-BH-A0DP-01A</td>
+      <td align="center">22378</td>
+      <td align="center">59361</td>
+      <td align="center">0.38</td>
+      <td align="center">22378</td>
+      <td align="center">63751</td>
+      <td align="center">0.35</td>
+      <td align="center">131652</td>
+      <td align="center">221858</td>
+      <td align="center">0.59</td>
+   </tr>
+ 
+                 
+                    <tr class="odd">
+                  
+                  
+                 
+      <td align="center">TCGA-BH-A0B8-01A</td>
+      <td align="center">TCGA-BH-A0DP-10A</td>
+      <td align="center">22876</td>
+      <td align="center">60686</td>
+      <td align="center">0.38</td>
+      <td align="center">22876</td>
+      <td align="center">64965</td>
+      <td align="center">0.35</td>
+      <td align="center">133950</td>
+      <td align="center">225977</td>
+      <td align="center">0.59</td>
+   </tr>
+ 
+                 
+                    <tr class="even">
+                  
+                  
+                 
+      <td align="center">TCGA-BH-A0B8-01A</td>
+      <td align="center">TCGA-BH-A0E0-01A</td>
+      <td align="center">20163</td>
+      <td align="center">56508</td>
+      <td align="center">0.36</td>
+      <td align="center">20163</td>
+      <td align="center">58536</td>
+      <td align="center">0.34</td>
+      <td align="center">125551</td>
+      <td align="center">212047</td>
+      <td align="center">0.59</td>
+   </tr>
+ 
+                 
+                    <tr class="odd">
+                  
+                  
+                 
+      <td align="center">TCGA-BH-A0B8-01A</td>
+      <td align="center">TCGA-BH-A0H7-01A</td>
+      <td align="center">21950</td>
+      <td align="center">60764</td>
+      <td align="center">0.36</td>
+      <td align="center">21950</td>
+      <td align="center">62020</td>
+      <td align="center">0.35</td>
+      <td align="center">131929</td>
+      <td align="center">224271</td>
+      <td align="center">0.59</td>
+   </tr>
+ 
+                 
+                    <tr class="even">
+                  
+                  
+                 
+      <td align="center">TCGA-BH-A0BJ-01A</td>
+      <td align="center">TCGA-BH-A0BM-01A</td>
+      <td align="center">22175</td>
+      <td align="center">59220</td>
+      <td align="center">0.37</td>
+      <td align="center">22175</td>
+      <td align="center">58643</td>
+      <td align="center">0.38</td>
+      <td align="center">120323</td>
+      <td align="center">202695</td>
+      <td align="center">0.59</td>
+   </tr>
+ 
+                 
+                    <tr class="odd">
+                  
+                  
+                 
+      <td align="center">TCGA-BH-A0BJ-01A</td>
+      <td align="center">TCGA-BH-A0C0-01A</td>
+      <td align="center">22996</td>
+      <td align="center">62022</td>
+      <td align="center">0.37</td>
+      <td align="center">22996</td>
+      <td align="center">61757</td>
+      <td align="center">0.37</td>
+      <td align="center">124714</td>
+      <td align="center">212409</td>
+      <td align="center">0.59</td>
+   </tr>
+ 
+                 
+                    <tr class="even">
+                  
+                  
+                 
+      <td align="center">TCGA-BH-A0BJ-01A</td>
+      <td align="center">TCGA-BH-A0DK-01A</td>
+      <td align="center">23876</td>
+      <td align="center">63365</td>
+      <td align="center">0.38</td>
+      <td align="center">23876</td>
+      <td align="center">61830</td>
+      <td align="center">0.39</td>
+      <td align="center">126925</td>
+      <td align="center">213742</td>
+      <td align="center">0.59</td>
+   </tr>
+ 
+                 
+                    <tr class="odd">
+                  
+                  
+                 
+      <td align="center">TCGA-BH-A0BJ-01A</td>
+      <td align="center">TCGA-BH-A0DP-01A</td>
+      <td align="center">23142</td>
+      <td align="center">63498</td>
+      <td align="center">0.36</td>
+      <td align="center">23142</td>
+      <td align="center">61969</td>
+      <td align="center">0.37</td>
+      <td align="center">127329</td>
+      <td align="center">216222</td>
+      <td align="center">0.59</td>
+   </tr>
+ 
+                 
+                    <tr class="even">
+                  
+                  
+                 
+      <td align="center">TCGA-BH-A0BJ-01A</td>
+      <td align="center">TCGA-BH-A0DP-10A</td>
+      <td align="center">23403</td>
+      <td align="center">64033</td>
+      <td align="center">0.37</td>
+      <td align="center">23403</td>
+      <td align="center">62431</td>
+      <td align="center">0.37</td>
+      <td align="center">128584</td>
+      <td align="center">218056</td>
+      <td align="center">0.59</td>
+   </tr>
+ 
+                 
+                    <tr class="odd">
+                  
+                  
+                 
+      <td align="center">TCGA-BH-A0BJ-01A</td>
+      <td align="center">TCGA-BH-A0E0-01A</td>
+      <td align="center">21767</td>
+      <td align="center">60641</td>
+      <td align="center">0.36</td>
+      <td align="center">21767</td>
+      <td align="center">57246</td>
+      <td align="center">0.38</td>
+      <td align="center">123444</td>
+      <td align="center">207587</td>
+      <td align="center">0.59</td>
+   </tr>
+ 
+                 
+                    <tr class="even">
+                  
+                  
+                 
+      <td align="center">TCGA-BH-A0BJ-01A</td>
+      <td align="center">TCGA-BH-A0H7-01A</td>
+      <td align="center">22406</td>
+      <td align="center">63552</td>
+      <td align="center">0.35</td>
+      <td align="center">22406</td>
+      <td align="center">59521</td>
+      <td align="center">0.38</td>
+      <td align="center">126843</td>
+      <td align="center">216017</td>
+      <td align="center">0.59</td>
+   </tr>
+ 
+                 
+                    <tr class="odd">
+                  
+                  
+                 
+      <td align="center">TCGA-BH-A0BM-01A</td>
+      <td align="center">TCGA-BH-A0C0-01A</td>
+      <td align="center">20928</td>
+      <td align="center">57099</td>
+      <td align="center">0.37</td>
+      <td align="center">20928</td>
+      <td align="center">57249</td>
+      <td align="center">0.37</td>
+      <td align="center">116547</td>
+      <td align="center">198460</td>
+      <td align="center">0.59</td>
+   </tr>
+ 
+                 
+                    <tr class="even">
+                  
+                  
+                 
+      <td align="center">TCGA-BH-A0BM-01A</td>
+      <td align="center">TCGA-BH-A0DK-01A</td>
+      <td align="center">21125</td>
+      <td align="center">56694</td>
+      <td align="center">0.37</td>
+      <td align="center">21125</td>
+      <td align="center">55935</td>
+      <td align="center">0.38</td>
+      <td align="center">116811</td>
+      <td align="center">196187</td>
+      <td align="center">0.60</td>
+   </tr>
+ 
+                 
+                    <tr class="odd">
+                  
+                  
+                 
+      <td align="center">TCGA-BH-A0BM-01A</td>
+      <td align="center">TCGA-BH-A0DP-01A</td>
+      <td align="center">21361</td>
+      <td align="center">58085</td>
+      <td align="center">0.37</td>
+      <td align="center">21361</td>
+      <td align="center">57465</td>
+      <td align="center">0.37</td>
+      <td align="center">119193</td>
+      <td align="center">201353</td>
+      <td align="center">0.59</td>
+   </tr>
+ 
+                 
+                    <tr class="even">
+                  
+                  
+                 
+      <td align="center">TCGA-BH-A0BM-01A</td>
+      <td align="center">TCGA-BH-A0DP-10A</td>
+      <td align="center">21612</td>
+      <td align="center">58537</td>
+      <td align="center">0.37</td>
+      <td align="center">21612</td>
+      <td align="center">57900</td>
+      <td align="center">0.37</td>
+      <td align="center">120325</td>
+      <td align="center">202941</td>
+      <td align="center">0.59</td>
+   </tr>
+ 
+                 
+                    <tr class="odd">
+                  
+                  
+                 
+      <td align="center">TCGA-BH-A0BM-01A</td>
+      <td align="center">TCGA-BH-A0E0-01A</td>
+      <td align="center">19985</td>
+      <td align="center">56486</td>
+      <td align="center">0.35</td>
+      <td align="center">19985</td>
+      <td align="center">53929</td>
+      <td align="center">0.37</td>
+      <td align="center">116450</td>
+      <td align="center">196446</td>
+      <td align="center">0.59</td>
+   </tr>
+ 
+                 
+                    <tr class="even">
+                  
+                  
+                 
+      <td align="center">TCGA-BH-A0BM-01A</td>
+      <td align="center">TCGA-BH-A0H7-01A</td>
+      <td align="center">20742</td>
+      <td align="center">58243</td>
+      <td align="center">0.36</td>
+      <td align="center">20742</td>
+      <td align="center">55098</td>
+      <td align="center">0.38</td>
+      <td align="center">118934</td>
+      <td align="center">201248</td>
+      <td align="center">0.59</td>
+   </tr>
+ 
+                 
+                    <tr class="odd">
+                  
+                  
+                 
+      <td align="center">TCGA-BH-A0C0-01A</td>
+      <td align="center">TCGA-BH-A0DK-01A</td>
+      <td align="center">22083</td>
+      <td align="center">60548</td>
+      <td align="center">0.36</td>
+      <td align="center">22083</td>
+      <td align="center">59564</td>
+      <td align="center">0.37</td>
+      <td align="center">123075</td>
+      <td align="center">208683</td>
+      <td align="center">0.59</td>
+   </tr>
+ 
+                 
+                    <tr class="even">
+                  
+                  
+                 
+      <td align="center">TCGA-BH-A0C0-01A</td>
+      <td align="center">TCGA-BH-A0DP-01A</td>
+      <td align="center">22141</td>
+      <td align="center">61372</td>
+      <td align="center">0.36</td>
+      <td align="center">22141</td>
+      <td align="center">60483</td>
+      <td align="center">0.37</td>
+      <td align="center">124177</td>
+      <td align="center">211833</td>
+      <td align="center">0.59</td>
+   </tr>
+ 
+                 
+                    <tr class="odd">
+                  
+                  
+                 
+      <td align="center">TCGA-BH-A0C0-01A</td>
+      <td align="center">TCGA-BH-A0DP-10A</td>
+      <td align="center">22509</td>
+      <td align="center">62409</td>
+      <td align="center">0.36</td>
+      <td align="center">22509</td>
+      <td align="center">61351</td>
+      <td align="center">0.37</td>
+      <td align="center">126284</td>
+      <td align="center">215337</td>
+      <td align="center">0.59</td>
+   </tr>
+ 
+                 
+                    <tr class="even">
+                  
+                  
+                 
+      <td align="center">TCGA-BH-A0C0-01A</td>
+      <td align="center">TCGA-BH-A0E0-01A</td>
+      <td align="center">20923</td>
+      <td align="center">59390</td>
+      <td align="center">0.35</td>
+      <td align="center">20923</td>
+      <td align="center">56330</td>
+      <td align="center">0.37</td>
+      <td align="center">121005</td>
+      <td align="center">205366</td>
+      <td align="center">0.59</td>
+   </tr>
+ 
+                 
+                    <tr class="odd">
+                  
+                  
+                 
+      <td align="center">TCGA-BH-A0C0-01A</td>
+      <td align="center">TCGA-BH-A0H7-01A</td>
+      <td align="center">21059</td>
+      <td align="center">61369</td>
+      <td align="center">0.34</td>
+      <td align="center">21059</td>
+      <td align="center">57712</td>
+      <td align="center">0.36</td>
+      <td align="center">123017</td>
+      <td align="center">211547</td>
+      <td align="center">0.58</td>
+   </tr>
+ 
+                 
+                    <tr class="even">
+                  
+                  
+                 
+      <td align="center">TCGA-BH-A0DK-01A</td>
+      <td align="center">TCGA-BH-A0DP-01A</td>
+      <td align="center">21514</td>
+      <td align="center">59087</td>
+      <td align="center">0.36</td>
+      <td align="center">21514</td>
+      <td align="center">59269</td>
+      <td align="center">0.36</td>
+      <td align="center">122396</td>
+      <td align="center">207210</td>
+      <td align="center">0.59</td>
+   </tr>
+ 
+                 
+                    <tr class="odd">
+                  
+                  
+                 
+      <td align="center">TCGA-BH-A0DK-01A</td>
+      <td align="center">TCGA-BH-A0DP-10A</td>
+      <td align="center">22128</td>
+      <td align="center">60291</td>
+      <td align="center">0.37</td>
+      <td align="center">22128</td>
+      <td align="center">60323</td>
+      <td align="center">0.37</td>
+      <td align="center">124372</td>
+      <td align="center">210404</td>
+      <td align="center">0.59</td>
+   </tr>
+ 
+                 
+                    <tr class="even">
+                  
+                  
+                 
+      <td align="center">TCGA-BH-A0DK-01A</td>
+      <td align="center">TCGA-BH-A0E0-01A</td>
+      <td align="center">20085</td>
+      <td align="center">57086</td>
+      <td align="center">0.35</td>
+      <td align="center">20085</td>
+      <td align="center">55101</td>
+      <td align="center">0.36</td>
+      <td align="center">118836</td>
+      <td align="center">200815</td>
+      <td align="center">0.59</td>
+   </tr>
+ 
+                 
+                    <tr class="odd">
+                  
+                  
+                 
+      <td align="center">TCGA-BH-A0DK-01A</td>
+      <td align="center">TCGA-BH-A0H7-01A</td>
+      <td align="center">21185</td>
+      <td align="center">60312</td>
+      <td align="center">0.35</td>
+      <td align="center">21185</td>
+      <td align="center">57961</td>
+      <td align="center">0.37</td>
+      <td align="center">123094</td>
+      <td align="center">209687</td>
+      <td align="center">0.59</td>
+   </tr>
+ 
+                 
+                    <tr class="even">
+                  
+                  
+                 
+      <td align="center">TCGA-BH-A0DP-01A</td>
+      <td align="center">TCGA-BH-A0DP-10A</td>
+      <td align="center">62354</td>
+      <td align="center">63577</td>
+      <td align="center">0.98</td>
+      <td align="center">62354</td>
+      <td align="center">63479</td>
+      <td align="center">0.98</td>
+      <td align="center">219260</td>
+      <td align="center">221588</td>
+      <td align="center">0.99</td>
+   </tr>
+ 
+                 
+                    <tr class="odd">
+                  
+                  
+                 
+      <td align="center">TCGA-BH-A0DP-01A</td>
+      <td align="center">TCGA-BH-A0E0-01A</td>
+      <td align="center">21461</td>
+      <td align="center">59102</td>
+      <td align="center">0.36</td>
+      <td align="center">21461</td>
+      <td align="center">56961</td>
+      <td align="center">0.38</td>
+      <td align="center">124149</td>
+      <td align="center">207039</td>
+      <td align="center">0.60</td>
+   </tr>
+ 
+                 
+                    <tr class="even">
+                  
+                  
+                 
+      <td align="center">TCGA-BH-A0DP-01A</td>
+      <td align="center">TCGA-BH-A0H7-01A</td>
+      <td align="center">21742</td>
+      <td align="center">62076</td>
+      <td align="center">0.35</td>
+      <td align="center">21742</td>
+      <td align="center">59243</td>
+      <td align="center">0.37</td>
+      <td align="center">127073</td>
+      <td align="center">216468</td>
+      <td align="center">0.59</td>
+   </tr>
+ 
+                 
+                    <tr class="odd">
+                  
+                  
+                 
+      <td align="center">TCGA-BH-A0DP-10A</td>
+      <td align="center">TCGA-BH-A0E0-01A</td>
+      <td align="center">21880</td>
+      <td align="center">60265</td>
+      <td align="center">0.36</td>
+      <td align="center">21880</td>
+      <td align="center">58149</td>
+      <td align="center">0.38</td>
+      <td align="center">126607</td>
+      <td align="center">211246</td>
+      <td align="center">0.60</td>
+   </tr>
+ 
+                 
+                    <tr class="even">
+                  
+                  
+                 
+      <td align="center">TCGA-BH-A0DP-10A</td>
+      <td align="center">TCGA-BH-A0H7-01A</td>
+      <td align="center">22225</td>
+      <td align="center">63139</td>
+      <td align="center">0.35</td>
+      <td align="center">22225</td>
+      <td align="center">60560</td>
+      <td align="center">0.37</td>
+      <td align="center">128840</td>
+      <td align="center">219790</td>
+      <td align="center">0.59</td>
+   </tr>
+ 
+                 
+                    <tr class="odd">
+                  
+                  
+                 
+      <td align="center">TCGA-BH-A0E0-01A</td>
+      <td align="center">TCGA-BH-A0H7-01A</td>
+      <td align="center">20342</td>
+      <td align="center">56756</td>
+      <td align="center">0.36</td>
+      <td align="center">20342</td>
+      <td align="center">56428</td>
+      <td align="center">0.36</td>
+      <td align="center">122316</td>
+      <td align="center">206362</td>
+      <td align="center">0.59</td>
+   </tr>
+
+</table>
+<p>Result figure</p>
+<p class="centeredImage"><img src="./vcfFigure/BRCA11_snp_filtered.pass.vcf.Method1.txt.png"></p>
+</div>
+<div><h2 id="M350">SNP count</h2>
+<p>SNP counts for each sample in each chromesome</p>
+<table align="center" style="border:#2894ff 1px solid;">
+ 
+                 <tr class="first">
+                  
+                 
+      <td align="center">Chromesome</td>
+      <td align="center">TCGA-A7-A0D9-01A</td>
+      <td align="center">TCGA-BH-A0B3-01A</td>
+      <td align="center">TCGA-BH-A0B8-01A</td>
+      <td align="center">TCGA-BH-A0BJ-01A</td>
+      <td align="center">TCGA-BH-A0BM-01A</td>
+      <td align="center">TCGA-BH-A0C0-01A</td>
+      <td align="center">TCGA-BH-A0DK-01A</td>
+      <td align="center">TCGA-BH-A0DP-01A</td>
+      <td align="center">TCGA-BH-A0DP-10A</td>
+      <td align="center">TCGA-BH-A0E0-01A</td>
+      <td align="center">TCGA-BH-A0H7-01A</td>
+   </tr>
+ 
+                 
+                    <tr class="odd">
+                  
+                  
+                 
+      <td align="center">1</td>
+      <td align="center">66795</td>
+      <td align="center">90674</td>
+      <td align="center">101158</td>
+      <td align="center">101946</td>
+      <td align="center">77113</td>
+      <td align="center">66103</td>
+      <td align="center">136650</td>
+      <td align="center">78707</td>
+      <td align="center">95843</td>
+      <td align="center">77034</td>
+      <td align="center">110803</td>
+   </tr>
+ 
+                 
+                    <tr class="even">
+                  
+                  
+                 
+      <td align="center">10</td>
+      <td align="center">38858</td>
+      <td align="center">49302</td>
+      <td align="center">70238</td>
+      <td align="center">50503</td>
+      <td align="center">41807</td>
+      <td align="center">37866</td>
+      <td align="center">80413</td>
+      <td align="center">38474</td>
+      <td align="center">56880</td>
+      <td align="center">40930</td>
+      <td align="center">60261</td>
+   </tr>
+ 
+                 
+                    <tr class="odd">
+                  
+                  
+                 
+      <td align="center">11</td>
+      <td align="center">40871</td>
+      <td align="center">51501</td>
+      <td align="center">62551</td>
+      <td align="center">61810</td>
+      <td align="center">43454</td>
+      <td align="center">39348</td>
+      <td align="center">72473</td>
+      <td align="center">43700</td>
+      <td align="center">59114</td>
+      <td align="center">44971</td>
+      <td align="center">62517</td>
+   </tr>
+ 
+                 
+                    <tr class="even">
+                  
+                  
+                 
+      <td align="center">12</td>
+      <td align="center">37717</td>
+      <td align="center">46305</td>
+      <td align="center">69906</td>
+      <td align="center">52203</td>
+      <td align="center">40865</td>
+      <td align="center">34123</td>
+      <td align="center">78482</td>
+      <td align="center">39148</td>
+      <td align="center">55942</td>
+      <td align="center">36509</td>
+      <td align="center">68373</td>
+   </tr>
+ 
+                 
+                    <tr class="odd">
+                  
+                  
+                 
+      <td align="center">13</td>
+      <td align="center">26083</td>
+      <td align="center">31428</td>
+      <td align="center">36895</td>
+      <td align="center">34147</td>
+      <td align="center">29300</td>
+      <td align="center">23903</td>
+      <td align="center">49479</td>
+      <td align="center">22520</td>
+      <td align="center">39768</td>
+      <td align="center">25076</td>
+      <td align="center">40523</td>
+   </tr>
+ 
+                 
+                    <tr class="even">
+                  
+                  
+                 
+      <td align="center">14</td>
+      <td align="center">25303</td>
+      <td align="center">29593</td>
+      <td align="center">45235</td>
+      <td align="center">31819</td>
+      <td align="center">27324</td>
+      <td align="center">23826</td>
+      <td align="center">51092</td>
+      <td align="center">25325</td>
+      <td align="center">36963</td>
+      <td align="center">21086</td>
+      <td align="center">37053</td>
+   </tr>
+ 
+                 
+                    <tr class="odd">
+                  
+                  
+                 
+      <td align="center">15</td>
+      <td align="center">32348</td>
+      <td align="center">28602</td>
+      <td align="center">34290</td>
+      <td align="center">34105</td>
+      <td align="center">26165</td>
+      <td align="center">23282</td>
+      <td align="center">49071</td>
+      <td align="center">21374</td>
+      <td align="center">34010</td>
+      <td align="center">21024</td>
+      <td align="center">32111</td>
+   </tr>
+ 
+                 
+                    <tr class="even">
+                  
+                  
+                 
+      <td align="center">16</td>
+      <td align="center">24800</td>
+      <td align="center">32610</td>
+      <td align="center">37406</td>
+      <td align="center">36385</td>
+      <td align="center">24073</td>
+      <td align="center">23248</td>
+      <td align="center">45540</td>
+      <td align="center">27638</td>
+      <td align="center">36593</td>
+      <td align="center">20472</td>
+      <td align="center">39356</td>
+   </tr>
+ 
+                 
+                    <tr class="odd">
+                  
+                  
+                 
+      <td align="center">17</td>
+      <td align="center">21800</td>
+      <td align="center">30757</td>
+      <td align="center">43128</td>
+      <td align="center">32795</td>
+      <td align="center">24777</td>
+      <td align="center">26334</td>
+      <td align="center">44564</td>
+      <td align="center">25766</td>
+      <td align="center">35020</td>
+      <td align="center">21007</td>
+      <td align="center">37674</td>
+   </tr>
+ 
+                 
+                    <tr class="even">
+                  
+                  
+                 
+      <td align="center">18</td>
+      <td align="center">20697</td>
+      <td align="center">25074</td>
+      <td align="center">38668</td>
+      <td align="center">29329</td>
+      <td align="center">21392</td>
+      <td align="center">20057</td>
+      <td align="center">44626</td>
+      <td align="center">21973</td>
+      <td align="center">31166</td>
+      <td align="center">23739</td>
+      <td align="center">29773</td>
+   </tr>
+ 
+                 
+                    <tr class="odd">
+                  
+                  
+                 
+      <td align="center">19</td>
+      <td align="center">21367</td>
+      <td align="center">25758</td>
+      <td align="center">33376</td>
+      <td align="center">29127</td>
+      <td align="center">21810</td>
+      <td align="center">19791</td>
+      <td align="center">33480</td>
+      <td align="center">21772</td>
+      <td align="center">26401</td>
+      <td align="center">19609</td>
+      <td align="center">27540</td>
+   </tr>
+ 
+                 
+                    <tr class="even">
+                  
+                  
+                 
+      <td align="center">2</td>
+      <td align="center">63365</td>
+      <td align="center">82013</td>
+      <td align="center">110057</td>
+      <td align="center">88632</td>
+      <td align="center">67180</td>
+      <td align="center">61996</td>
+      <td align="center">134341</td>
+      <td align="center">62899</td>
+      <td align="center">93344</td>
+      <td align="center">63164</td>
+      <td align="center">104156</td>
+   </tr>
+ 
+                 
+                    <tr class="odd">
+                  
+                  
+                 
+      <td align="center">20</td>
+      <td align="center">24250</td>
+      <td align="center">22987</td>
+      <td align="center">32101</td>
+      <td align="center">24002</td>
+      <td align="center">18768</td>
+      <td align="center">18396</td>
+      <td align="center">35423</td>
+      <td align="center">17070</td>
+      <td align="center">24518</td>
+      <td align="center">18769</td>
+      <td align="center">35695</td>
+   </tr>
+ 
+                 
+                    <tr class="even">
+                  
+                  
+                 
+      <td align="center">21</td>
+      <td align="center">12302</td>
+      <td align="center">15074</td>
+      <td align="center">22203</td>
+      <td align="center">16894</td>
+      <td align="center">12795</td>
+      <td align="center">11630</td>
+      <td align="center">24191</td>
+      <td align="center">10574</td>
+      <td align="center">17538</td>
+      <td align="center">11698</td>
+      <td align="center">20386</td>
+   </tr>
+ 
+                 
+                    <tr class="odd">
+                  
+                  
+                 
+      <td align="center">22</td>
+      <td align="center">11064</td>
+      <td align="center">12408</td>
+      <td align="center">17908</td>
+      <td align="center">12623</td>
+      <td align="center">10709</td>
+      <td align="center">10787</td>
+      <td align="center">17931</td>
+      <td align="center">11260</td>
+      <td align="center">14685</td>
+      <td align="center">8775</td>
+      <td align="center">14665</td>
+   </tr>
+ 
+                 
+                    <tr class="even">
+                  
+                  
+                 
+      <td align="center">3</td>
+      <td align="center">49899</td>
+      <td align="center">64958</td>
+      <td align="center">79149</td>
+      <td align="center">66768</td>
+      <td align="center">55892</td>
+      <td align="center">50714</td>
+      <td align="center">108400</td>
+      <td align="center">49686</td>
+      <td align="center">76187</td>
+      <td align="center">46409</td>
+      <td align="center">85287</td>
+   </tr>
+ 
+                 
+                    <tr class="odd">
+                  
+                  
+                 
+      <td align="center">4</td>
+      <td align="center">51172</td>
+      <td align="center">59154</td>
+      <td align="center">67365</td>
+      <td align="center">65278</td>
+      <td align="center">56090</td>
+      <td align="center">47206</td>
+      <td align="center">115198</td>
+      <td align="center">48884</td>
+      <td align="center">77322</td>
+      <td align="center">44504</td>
+      <td align="center">86307</td>
+   </tr>
+ 
+                 
+                    <tr class="even">
+                  
+                  
+                 
+      <td align="center">5</td>
+      <td align="center">43667</td>
+      <td align="center">52942</td>
+      <td align="center">82262</td>
+      <td align="center">68272</td>
+      <td align="center">46666</td>
+      <td align="center">41429</td>
+      <td align="center">96364</td>
+      <td align="center">47501</td>
+      <td align="center">66119</td>
+      <td align="center">37764</td>
+      <td align="center">79702</td>
+   </tr>
+ 
+                 
+                    <tr class="odd">
+                  
+                  
+                 
+      <td align="center">6</td>
+      <td align="center">50051</td>
+      <td align="center">65787</td>
+      <td align="center">74659</td>
+      <td align="center">66056</td>
+      <td align="center">47065</td>
+      <td align="center">47568</td>
+      <td align="center">104555</td>
+      <td align="center">43021</td>
+      <td align="center">71173</td>
+      <td align="center">49059</td>
+      <td align="center">73320</td>
+   </tr>
+ 
+                 
+                    <tr class="even">
+                  
+                  
+                 
+      <td align="center">7</td>
+      <td align="center">51970</td>
+      <td align="center">52160</td>
+      <td align="center">70758</td>
+      <td align="center">63601</td>
+      <td align="center">44114</td>
+      <td align="center">40321</td>
+      <td align="center">88381</td>
+      <td align="center">48849</td>
+      <td align="center">61283</td>
+      <td align="center">47835</td>
+      <td align="center">72386</td>
+   </tr>
+ 
+                 
+                    <tr class="odd">
+                  
+                  
+                 
+      <td align="center">8</td>
+      <td align="center">55127</td>
+      <td align="center">55542</td>
+      <td align="center">65614</td>
+      <td align="center">56581</td>
+      <td align="center">42833</td>
+      <td align="center">44892</td>
+      <td align="center">86002</td>
+      <td align="center">43240</td>
+      <td align="center">60181</td>
+      <td align="center">42492</td>
+      <td align="center">87501</td>
+   </tr>
+ 
+                 
+                    <tr class="even">
+                  
+                  
+                 
+      <td align="center">9</td>
+      <td align="center">23107</td>
+      <td align="center">36550</td>
+      <td align="center">39386</td>
+      <td align="center">42971</td>
+      <td align="center">34070</td>
+      <td align="center">30851</td>
+      <td align="center">60853</td>
+      <td align="center">30349</td>
+      <td align="center">45513</td>
+      <td align="center">30380</td>
+      <td align="center">43860</td>
+   </tr>
+ 
+                 
+                    <tr class="odd">
+                  
+                  
+                 
+      <td align="center">X</td>
+      <td align="center">22195</td>
+      <td align="center">25869</td>
+      <td align="center">38439</td>
+      <td align="center">35359</td>
+      <td align="center">25014</td>
+      <td align="center">20691</td>
+      <td align="center">43268</td>
+      <td align="center">22331</td>
+      <td align="center">34324</td>
+      <td align="center">27251</td>
+      <td align="center">31010</td>
+   </tr>
+ 
+                 
+                    <tr class="even">
+                  
+                  
+                 
+      <td align="center">Y</td>
+      <td align="center">346</td>
+      <td align="center">450</td>
+      <td align="center">508</td>
+      <td align="center">408</td>
+      <td align="center">380</td>
+      <td align="center">335</td>
+      <td align="center">642</td>
+      <td align="center">280</td>
+      <td align="center">415</td>
+      <td align="center">279</td>
+      <td align="center">367</td>
+   </tr>
+
+</table>
+</div>
+<div><h2 id="M400">Score</h2>
+<p>Description for each figure</p>
+<pre>
+POS: Allele position in chromosome
+AB: Allele Balance for hets (ref/(ref+alt))
+AC: Allele count in genotypes, for each ALT allele, in the same order as listed
+AF: Allele Frequency, for each ALT allele, in the same order as listed
+AN: Total number of alleles in called genotypes
+BaseQRankSum: Z-score from Wilcoxon rank sum test of Alt Vs. Ref base qualities
+DP: Filtered Depth
+Dels: Fraction of Reads Containing Spanning Deletions
+FS: Phred-scaled p-value using Fisher's exact test to detect strand bias
+HRun: Largest Contiguous Homopolymer Run of Variant Allele In Either Direction
+HaplotypeScore: Consistency of the site with at most two segregating haplotypes
+MLEAC: Maximum likelihood expectation (MLE) for the allele counts (not necessarily the same as the AC), for each ALT allele
+MLEAF: Maximum likelihood expectation (MLE) for the allele frequency (not necessarily the same as the AF), for each ALT allele
+MQ: RMS Mapping Quality
+MQ0: Total Mapping Quality Zero Reads
+MQRankSum: Z-score From Wilcoxon rank sum test of Alt vs. Ref read mapping qualities
+QD: Variant Confidence/Quality by Depth
+ReadPosRankSum: Z-score from Wilcoxon rank sum test of Alt vs. Ref read position bias
+SB: Strand Bias
+</pre>
+
+<p class="centeredImage"><img src="./vcfFigure//scoreCompare.POS.png"></p>
+
+<p class="centeredImage"><img src="./vcfFigure//scoreCompare.AC.png"></p>
+
+<p class="centeredImage"><img src="./vcfFigure//scoreCompare.AF.png"></p>
+
+<p class="centeredImage"><img src="./vcfFigure//scoreCompare.AN.png"></p>
+
+<p class="centeredImage"><img src="./vcfFigure//scoreCompare.BaseQRankSum.png"></p>
+
+<p class="centeredImage"><img src="./vcfFigure//scoreCompare.DP.png"></p>
+
+<p class="centeredImage"><img src="./vcfFigure//scoreCompare.Dels.png"></p>
+
+<p class="centeredImage"><img src="./vcfFigure//scoreCompare.FS.png"></p>
+
+<p class="centeredImage"><img src="./vcfFigure//scoreCompare.HaplotypeScore.png"></p>
+
+<p class="centeredImage"><img src="./vcfFigure//scoreCompare.MLEAC.png"></p>
+
+<p class="centeredImage"><img src="./vcfFigure//scoreCompare.MLEAF.png"></p>
+
+<p class="centeredImage"><img src="./vcfFigure//scoreCompare.MQ.png"></p>
+
+<p class="centeredImage"><img src="./vcfFigure//scoreCompare.MQ0.png"></p>
+
+<p class="centeredImage"><img src="./vcfFigure//scoreCompare.MQRankSum.png"></p>
+
+<p class="centeredImage"><img src="./vcfFigure//scoreCompare.QD.png"></p>
+
+<p class="centeredImage"><img src="./vcfFigure//scoreCompare.ReadPosRankSum.png"></p>
+
+</div>
+<div><h2 id="M500">Annovar annotation</h2>
+<table align="center" style="border:#2894ff 1px solid;">
+ 
+                 <tr class="first">
+                  
+                 
+      <td align="center">Function</td>
+      <td align="center">In snp137</td>
+      <td align="center">Not in snp137</td>
+   </tr>
+ 
+                 
+                    <tr class="odd">
+                  
+                  
+                 
+      <td align="center">downstream</td>
+      <td align="center">5103</td>
+      <td align="center">112</td>
+   </tr>
+ 
+                 
+                    <tr class="even">
+                  
+                  
+                 
+      <td align="center">exonic</td>
+      <td align="center">18314</td>
+      <td align="center">190</td>
+   </tr>
+ 
+                 
+                    <tr class="odd">
+                  
+                  
+                 
+      <td align="center">intergenic</td>
+      <td align="center">406314</td>
+      <td align="center">7371</td>
+   </tr>
+ 
+                 
+                    <tr class="even">
+                  
+                  
+                 
+      <td align="center">intronic</td>
+      <td align="center">326785</td>
+      <td align="center">8022</td>
+   </tr>
+ 
+                 
+                    <tr class="odd">
+                  
+                  
+                 
+      <td align="center">ncRNA_exonic</td>
+      <td align="center">2413</td>
+      <td align="center">59</td>
+   </tr>
+ 
+                 
+                    <tr class="even">
+                  
+                  
+                 
+      <td align="center">ncRNA_intronic</td>
+      <td align="center">22736</td>
+      <td align="center">540</td>
+   </tr>
+ 
+                 
+                    <tr class="odd">
+                  
+                  
+                 
+      <td align="center">ncRNA_UTR3</td>
+      <td align="center">174</td>
+      <td align="center">3</td>
+   </tr>
+ 
+                 
+                    <tr class="even">
+                  
+                  
+                 
+      <td align="center">ncRNA_UTR5</td>
+      <td align="center">37</td>
+      <td align="center">5</td>
+   </tr>
+ 
+                 
+                    <tr class="odd">
+                  
+                  
+                 
+      <td align="center">splicing</td>
+      <td align="center">42</td>
+      <td align="center">4</td>
+   </tr>
+ 
+                 
+                    <tr class="even">
+                  
+                  
+                 
+      <td align="center">upstream</td>
+      <td align="center">4954</td>
+      <td align="center">122</td>
+   </tr>
+ 
+                 
+                    <tr class="odd">
+                  
+                  
+                 
+      <td align="center">upstream;downstream</td>
+      <td align="center">213</td>
+      <td align="center">4</td>
+   </tr>
+ 
+                 
+                    <tr class="even">
+                  
+                  
+                 
+      <td align="center">UTR3</td>
+      <td align="center">8502</td>
+      <td align="center">211</td>
+   </tr>
+ 
+                 
+                    <tr class="odd">
+                  
+                  
+                 
+      <td align="center">UTR5</td>
+      <td align="center">1953</td>
+      <td align="center">69</td>
+   </tr>
+ 
+                 
+                    <tr class="even">
+                  
+                  
+                 
+      <td align="center">UTR5;UTR3</td>
+      <td align="center">4</td>
+      <td align="center">1</td>
+   </tr>
+ 
+                 
+                    <tr class="odd">
+                  
+                  
+                 
+      <td align="center">exonic;splicing</td>
+      <td align="center">6</td>
+      <td align="center">0</td>
+   </tr>
+ 
+                 
+                    <tr class="even">
+                  
+                  
+                 
+      <td align="center">ncRNA_splicing</td>
+      <td align="center">11</td>
+      <td align="center">0</td>
+   </tr>
+ 
+                 
+                    <tr class="odd">
+                  
+                  
+                 
+      <td align="center"></td>
+      <td align="center"></td>
+      <td align="center"></td>
+   </tr>
+ 
+                 
+                    <tr class="even">
+                  
+                  
+                 
+      <td align="center">nonsynonymous SNV</td>
+      <td align="center">8311</td>
+      <td align="center">114</td>
+   </tr>
+ 
+                 
+                    <tr class="odd">
+                  
+                  
+                 
+      <td align="center">stopgain SNV</td>
+      <td align="center">58</td>
+      <td align="center">5</td>
+   </tr>
+ 
+                 
+                    <tr class="even">
+                  
+                  
+                 
+      <td align="center">stoploss SNV</td>
+      <td align="center">11</td>
+      <td align="center">1</td>
+   </tr>
+ 
+                 
+                    <tr class="odd">
+                  
+                  
+                 
+      <td align="center">synonymous SNV</td>
+      <td align="center">9675</td>
+      <td align="center">68</td>
+   </tr>
+ 
+                 
+                    <tr class="even">
+                  
+                  
+                 
+      <td align="center">unknown</td>
+      <td align="center">265</td>
+      <td align="center">2</td>
+   </tr>
+
+</table>
+</div>
+</body>
+</html>

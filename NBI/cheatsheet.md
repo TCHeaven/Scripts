@@ -1,12 +1,12 @@
 ```bash
 du --max-depth=1 --total -h .
 ```
-
 ```bash
-sacct -j 54241155 --format=JobID,JobName,ReqMem,MaxRSS,TotalCPU,AllocCPUS,Elapsed,State,ExitCode
-
-57571595
-57589000
+salloc --mem=200G
+```
+```bash
+sacct -j 57795761 --format=JobID,JobName,ReqMem,MaxRSS,TotalCPU,AllocCPUS,Elapsed,State,ExitCode
+57715532
 ```
 ```bash
 Jobs=$(squeue -u did23faz| grep 'omniHiC'  | wc -l)
@@ -27,10 +27,12 @@ ProgDir=~/git_repos/Wrappers/NBI
 sbatch $ProgDir/run_omniHiCmap.sh $Assembly $Enzyme $OutDir $OutFile $Read1 $Read2
 ```
 ```bash
-singularity exec /jic/scratch/groups/Saskia-Hogenhout/tom_heaven/containers/python3.sif python3
+singularity exec /jic/scratch/groups/Saskia-Hogenhout/tom_heaven/containers/python3.sif python3 - <<EOF 
+
+EOF
 ```
 ```bash
-for job in $(squeue -u did23faz | grep 'bsmap' | egrep '(AssocMaxJobsLimit|Priority)' | awk '{print $1}'); do
+for job in $(squeue -u did23faz | egrep '(AssocMaxJobsLimit|(PartitionTimeLimit))' | awk '{print $1}'); do
     scancel $job
 done
 
@@ -58,6 +60,15 @@ done
 for job in $(cat logs/pamllog.txt | grep 'Submitted'| awk '{print $4}'); do
 sacct -j "$job" --format=JobID,JobName,ReqMem,MaxRSS,TotalCPU,AllocCPUS,Elapsed,State,ExitCode | grep 'paml' |  awk '{print $6}' >> temp_times.txt
 done
+
+for job in $(echo {57795755..57795777}); do
+x=$(sacct -j "$job" --format=JobID,JobName,ReqMem,MaxRSS,TotalCPU,AllocCPUS,Elapsed,State,ExitCode | grep 'COMPLETED'| grep 'bash'| awk '{print $1}')
+grep 'Inchworm file:' slurm.${x}.out
+done
+
+Inchworm file:
+
+57758418-65
 
 mapfile -t times < temp_times.txt
 
@@ -99,4 +110,49 @@ tmp_57221669
 Keeping folder: tmp_57221674
 Deleting folder: tmp_57291096
 
+```
+```bash
+# Define the script to run
+cleanup_script="for file in \$(ls dna_qc/Myzus/persicae/wouters/*/subsampled/trim_galore/*.fq.gz dna_qc/Myzus/persicae/singh/*/subsampled/trim_galore/*.fq.gz); do rm \$file; done"
+
+# Run the script every 5 minutes for 10 hours
+for ((i=0; i<120; i++)); do
+    echo "Running cleanup script (iteration $((i+1)))"
+    eval "$cleanup_script"
+    sleep 300s  # 300 seconds = 5 minutes
+done
+
+ls /jic/scratch/groups/Saskia-Hogenhout/tom_heaven/Aphididae/dna_qc/Myzus/persicae/singh/*/subsampled/trim_galore/*.fq.gz
+```
+```bash
+find . -name "slurm*" -ctime +0 -print > temp_delete_slurm.txt
+
+for file in $(cat temp_delete_slurm.txt); do
+    rm $file
+done
+```
+```bash
+tar -xzvf folder_to_decompress.tar.gz
+tar -czvf archive_name.tar.gz folder_to_compress
+```
+```bash
+cd ~
+cp /jic/scratch/groups/Saskia-Hogenhout/tom_heaven/containers/methylkit1.28.0.sif .
+cp /jic/scratch/groups/Saskia-Hogenhout/tom_heaven/containers/genomation1.34.0.sif .
+singularity overlay create --size 768 ~/overlay.img
+sudo singularity shell --overlay ~/overlays/overlay.img ~/overlays/genomation1.34.0.sif
+
+R --vanilla
+setrepo = getOption("repos")
+setrepo["CRAN"] = "http://cran.uk.r-project.org"
+options(repos = setrepo)
+rm(setrepo)
+install.packages("lattice")
+install.packages("ggplot2")
+install.packages("gplots")
+Sys.setenv(RGL_USE_NULL = TRUE)
+if (!require("BiocManager", quietly = TRUE))
+    install.packages("BiocManager")
+BiocManager::install("methylKit")
+q()
 ```

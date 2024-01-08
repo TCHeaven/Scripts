@@ -9,28 +9,43 @@ cd git_repos
 git clone https://github.com/TCHeaven/Aphididae
 git clone https://github.com/TCHeaven/Psyllidae
 git clone https://github.com/TCHeaven/Wrappers
+git clone https://github.com/TCHeaven/Pipelines
 
 #NOTE: cannot push to github from the head node
+current_date_time=$(date)
+date=$(echo "Current Date and Time: $current_date_time")
+
 cd /hpc-home/did23faz/git_repos/Aphididae
 git add .
-git commit . -m "" 
+git commit . -m "$date" 
 git push origin main
 
 cd /hpc-home/did23faz/git_repos/Psyllidae
 git add .
-git commit . -m ""
+git commit . -m "$date"
 git push origin main
 
 cd /hpc-home/did23faz/git_repos/Wrappers/NBI
 git add .
-git commit . -m ""
+git commit . -m "$date"
 git push origin main
 
 cd /hpc-home/did23faz/git_repos/Scripts/NBI
 git add .
-git commit . -m ""
+git commit . -m "$date"
 git push origin main
+
+cd /hpc-home/did23faz/git_repos/nano_diagnositcs
+git add .
+git commit . -m "$date"
+git push origin master
+
+cd /hpc-home/did23faz/git_repos/Pipelines
+git add .
+git commit . -m "$date"
+git push origin main
+
 ```
 ```bash
-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
+
 ```
