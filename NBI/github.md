@@ -13,7 +13,9 @@ git clone https://github.com/TCHeaven/Pipelines
 
 #NOTE: cannot push to github from the head node
 current_date_time=$(date)
-date=$(echo "Current Date and Time: $current_date_time")
+date=$(echo "Changes committed: $current_date_time")
+
+export GITHUB_TOKEN=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
 
 cd /hpc-home/did23faz/git_repos/Aphididae
 git add .
@@ -45,6 +47,7 @@ git add .
 git commit . -m "$date"
 git push origin main
 
+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
 ```
 ```bash
 

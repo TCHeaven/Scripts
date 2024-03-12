@@ -5,7 +5,7 @@ du --max-depth=1 --total -h .
 salloc --mem=200G
 ```
 ```bash
-sacct -j 57795761 --format=JobID,JobName,ReqMem,MaxRSS,TotalCPU,AllocCPUS,Elapsed,State,ExitCode
+sacct -j 58940918 --format=JobID,JobName,ReqMem,MaxRSS,TotalCPU,AllocCPUS,Elapsed,State,ExitCode,Ntasks,NCPUS,User
 57715532
 ```
 ```bash
@@ -27,7 +27,14 @@ ProgDir=~/git_repos/Wrappers/NBI
 sbatch $ProgDir/run_omniHiCmap.sh $Assembly $Enzyme $OutDir $OutFile $Read1 $Read2
 ```
 ```bash
+find . -type f -name "*.bam"
+```
+```bash
 singularity exec /jic/scratch/groups/Saskia-Hogenhout/tom_heaven/containers/python3.sif python3 - <<EOF 
+
+EOF
+
+singularity exec /jic/scratch/groups/Saskia-Hogenhout/tom_heaven/containers/earlgrey4.0.6.sif conda activate earlGrey - <<EOF 
 
 EOF
 ```
@@ -36,7 +43,11 @@ for job in $(squeue -u did23faz | egrep '(AssocMaxJobsLimit|(PartitionTimeLimit)
     scancel $job
 done
 
-for job in $(squeue -u did23faz | grep 'bsmap' | awk '{print $1}'); do
+for job in $(squeue -u did23faz | egrep 'busco' | awk '{print $1}'); do
+    scancel $job
+done
+
+for job in $(squeue -u did23faz | grep 'mafft' | awk '{print $1}'); do
     scancel $job
 done
 
@@ -57,7 +68,7 @@ while [ $Jobs -gt 123 ]; do
 done
 ```
 ```bash
-for job in $(cat logs/pamllog.txt | grep 'Submitted'| awk '{print $4}'); do
+for job in $(cat logs/pamllog_homN.txt | grep 'Submitted'| awk '{print $4}'); do
 sacct -j "$job" --format=JobID,JobName,ReqMem,MaxRSS,TotalCPU,AllocCPUS,Elapsed,State,ExitCode | grep 'paml' |  awk '{print $6}' >> temp_times.txt
 done
 
@@ -124,6 +135,7 @@ done
 
 ls /jic/scratch/groups/Saskia-Hogenhout/tom_heaven/Aphididae/dna_qc/Myzus/persicae/singh/*/subsampled/trim_galore/*.fq.gz
 ```
+Delete slurm files that are over 1 day old:
 ```bash
 find . -name "slurm*" -ctime +0 -print > temp_delete_slurm.txt
 
