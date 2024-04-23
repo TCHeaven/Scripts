@@ -5,7 +5,9 @@ du --max-depth=1 --total -h .
 salloc --mem=200G
 ```
 ```bash
-sacct -j 58940918 --format=JobID,JobName,ReqMem,MaxRSS,TotalCPU,AllocCPUS,Elapsed,State,ExitCode,Ntasks,NCPUS,User
+sacct -j 58864242 --format=JobID,JobName,ReqMem,MaxRSS,TotalCPU,AllocCPUS,Elapsed,State,ExitCode,Ntasks,NCPUS,User
+sacct -j 19260713 --format=JobID,JobName,ReqMem,MaxRSS,TotalCPU,AllocCPUS,Elapsed,State,ExitCode,Ntasks,NCPUS,User
+sacct -j 58565446 --format=JobID,JobName,ReqMem,MaxRSS,TotalCPU,AllocCPUS,Elapsed,State,ExitCode,Ntasks,NCPUS,User
 57715532
 ```
 ```bash
@@ -39,11 +41,49 @@ singularity exec /jic/scratch/groups/Saskia-Hogenhout/tom_heaven/containers/earl
 EOF
 ```
 ```bash
+SOURCE_DB_MANIFEST="https://ftp.ncbi.nlm.nih.gov/genomes/TOOLS/FCS/database/test-only/test-only.manifest"
+LOCAL_DB="/home/theaven/scratch/apps/fcs/test"
+python3 fcs.py db get --mft "$SOURCE_DB_MANIFEST" --dir "$LOCAL_DB/test-only" 
+python3 fcs.py db check --mft "$SOURCE_DB_MANIFEST" --dir "$LOCAL_DB/test-only"
+srun -p short  --mem 10G --pty bash
+
+SOURCE_DB_MANIFEST="https://ftp.ncbi.nlm.nih.gov/genomes/TOOLS/FCS/database/latest/all.manifest"
+LOCAL_DB="/home/theaven/scratch/apps/fcs/all"
+python3 fcs.py db get --mft "$SOURCE_DB_MANIFEST" --dir "$LOCAL_DB/gxdb" 
+
+python3 fcs.py db check --mft "$SOURCE_DB_MANIFEST" --dir "$LOCAL_DB/gxdb"
+
+python3 /home/theaven/scratch/apps/fcs/fcs.py screen genome --fasta ./fcsgx_test.fa.gz --out-dir ./gx_out/ --gx-db "/home/theaven/scratch/apps/fcs/all/gxdb/all"  --tax-id 6973
+
+#########################################################################################################################
+fasta=~/fcsgx_test.fa.gz
+OutDir=~/gx_out
+OutFile=testsss
+cpu=48
+
+GX_NUM_CORES=${cpu}
+export FCS_DEFAULT_IMAGE=/jic/scratch/groups/Saskia-Hogenhout/tom_heaven/containers/fcs-gx.sif
+python3 ./fcs.py screen genome --fasta ${fasta} --out-dir ${OutDir} --out-basename ${OutFile} --gx-db "/jic/scratch/groups/Saskia-Hogenhout/tom_heaven/databases/fcs/gxdb/gxdb" --tax-id 6973 
+
+python3 ./fcs.py db check --mft "$SOURCE_DB_MANIFEST" --dir "/jic/scratch/groups/Saskia-Hogenhout/tom_heaven/databases/fcs/gxdb/gxdb"
+python3 ./fcs.py clean genome --help
+
+srun -p jic-largemem -c 48 --mem 500G --pty bash
+source package 1413a4f0-44e3-4b9d-b6c6-0f5c0048df88
+GX_NUM_CORES=48
+export FCS_DEFAULT_IMAGE=/jic/scratch/groups/Saskia-Hogenhout/tom_heaven/containers/fcs-gx.sif
+python3 ./fcs.py screen genome --fasta /jic/scratch/groups/Saskia-Hogenhout/tom_heaven/Psyllidae/assembly/genome/T_apicales/hifiasm_19.5/880m/29/3/3.0/0.75/break10x/purge_dups/sanger/MitoHifi/filtered/T_apicales_880m_29_3_3.0_0.75_break_TellSeqPurged_curated_nomito_filtered.fa --out-dir /jic/scratch/groups/Saskia-Hogenhout/tom_heaven/Psyllidae/assembly/genome/T_apicales/hifiasm_19.5/880m/29/3/3.0/0.75/break10x/purge_dups/sanger/MitoHifi/filtered/fcs/ --gx-db "/jic/scratch/groups/Saskia-Hogenhout/tom_heaven/databases/fcs/gxdb/all"  --tax-id 872318
+
+
+
+
+```
+```bash
 for job in $(squeue -u did23faz | egrep '(AssocMaxJobsLimit|(PartitionTimeLimit))' | awk '{print $1}'); do
     scancel $job
 done
 
-for job in $(squeue -u did23faz | egrep 'busco' | awk '{print $1}'); do
+for job in $(squeue -u did23faz | egrep 'trim_gal' | awk '{print $1}'); do
     scancel $job
 done
 
@@ -150,9 +190,8 @@ tar -czvf archive_name.tar.gz folder_to_compress
 ```bash
 cd ~
 cp /jic/scratch/groups/Saskia-Hogenhout/tom_heaven/containers/methylkit1.28.0.sif .
-cp /jic/scratch/groups/Saskia-Hogenhout/tom_heaven/containers/genomation1.34.0.sif .
 singularity overlay create --size 768 ~/overlay.img
-sudo singularity shell --overlay ~/overlays/overlay.img ~/overlays/genomation1.34.0.sif
+sudo singularity shell --overlay ~/overlay.img ~/methylkit1.28.0.sif
 
 R --vanilla
 setrepo = getOption("repos")
@@ -167,4 +206,66 @@ if (!require("BiocManager", quietly = TRUE))
     install.packages("BiocManager")
 BiocManager::install("methylKit")
 q()
+
+
+BiocManager::install("HiCExperiment") #
+BiocManager::install("HiContacts")
+BiocManager::install("HiCool")
+BiocManager::install("HiContactsData")
+BiocManager::install("DNAZooData")
+BiocManager::install("fourDNData")
+
+install.packages("InteractionSet")
+install.packages("ggplot2")
+install.packages("GenomicRanges")
+install.packages("rtracklayer")
+install.packages("dplyr")
+install.packages("fourDNData")
+install.packages("OHCA")
+install.packages("cowplot")
+install.packages("purrr")
+install.packages("BiocParallel")
+install.packages("plyinteractions")
+install.packages("multiHiCcompare")
+install.packages("tidyr")
+install.packages("diffHic")
+install.packages("TopDom")
+install.packages("GOTHiC")
+install.packages("DNAZooData")
+
+BiocManager::install("InteractionSet")
+BiocManager::install("ggplot2")
+BiocManager::install("GenomicRanges")
+BiocManager::install("rtracklayer")
+BiocManager::install("dplyr")
+BiocManager::install("fourDNData")
+BiocManager::install("OHCA")
+BiocManager::install("cowplot")
+BiocManager::install("purrr")
+BiocManager::install("BiocParallel")
+BiocManager::install("plyinteractions")
+BiocManager::install("multiHiCcompare")
+BiocManager::install("tidyr")
+BiocManager::install("diffHic")
+BiocManager::install("TopDom")
+BiocManager::install("GOTHiC")
+BiocManager::install("DNAZooData")
+
+library(InteractionSet)
+library(ggplot2)
+library(GenomicRanges)
+library(rtracklayer)
+library(dplyr)
+library(fourDNData)
+library(OHCA)
+library(cowplot)
+library(purrr)
+library(BiocParallel)
+library(plyinteractions)
+library(multiHiCcompare)
+library(tidyr)
+library(diffHic)
+library(TopDom)
+library(GOTHiC)
+library(DNAZooData)
 ```

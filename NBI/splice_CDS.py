@@ -2,6 +2,7 @@ import sys
 import os
 import pysam
 from pyfaidx import Fasta
+import re
 
 multi_fasta_file = sys.argv[1]
 gff3_file = sys.argv[2]
@@ -35,6 +36,9 @@ def splice_genes(gff3_file, multi_fasta_file, output_file):
                 print(CDS_start)
                 CDS_end = int(gene_info[4]) - gene_start
                 CDS_coordinates[CDS_id] = (CDS_chrom, CDS_start, CDS_end)
+    def natural_sort_key(s):
+        return [int(text) if text.isdigit() else text.lower() for text in re.split(r'(\d+)', s)]
+    sorted_CDS_coordinates = sorted(CDS_coordinates.items(), key=lambda x: natural_sort_key(x[0]))
     with open(multi_fasta_file, "r") as fasta_file, open(output_file, "w") as output:
         for fastaline in fasta_file:
             fastaline = fastaline.strip()
@@ -47,7 +51,7 @@ def splice_genes(gff3_file, multi_fasta_file, output_file):
                 #print("splicing")
                 current_seq += fastaline  # Script will only work if fasta is in single line format 
                 #print(current_seq)
-                for cds_id, (CDS_chrom, CDS_start, CDS_end) in sorted(CDS_coordinates.items()):
+                for cds_id, (CDS_chrom, CDS_start, CDS_end) in sorted_CDS_coordinates:
                     if CDS_start <= CDS_end <= len(current_seq):
                         print(cds_id)
                         start_pos = CDS_start - 1
