@@ -5,9 +5,9 @@ du --max-depth=1 --total -h .
 salloc --mem=200G
 ```
 ```bash
-sacct -j 58864242 --format=JobID,JobName,ReqMem,MaxRSS,TotalCPU,AllocCPUS,Elapsed,State,ExitCode,Ntasks,NCPUS,User
+sacct -j 21572601 --format=JobID,JobName,ReqMem,MaxRSS,TotalCPU,AllocCPUS,Elapsed,State,ExitCode,Ntasks,NCPUS,User
 sacct -j 19260713 --format=JobID,JobName,ReqMem,MaxRSS,TotalCPU,AllocCPUS,Elapsed,State,ExitCode,Ntasks,NCPUS,User
-sacct -j 58565446 --format=JobID,JobName,ReqMem,MaxRSS,TotalCPU,AllocCPUS,Elapsed,State,ExitCode,Ntasks,NCPUS,User
+sacct -j 6290051 --format=JobID,JobName,ReqMem,MaxRSS,TotalCPU,AllocCPUS,Elapsed,State,ExitCode,Ntasks,NCPUS,User
 57715532
 ```
 ```bash
@@ -29,6 +29,10 @@ ProgDir=~/git_repos/Wrappers/NBI
 sbatch $ProgDir/run_omniHiCmap.sh $Assembly $Enzyme $OutDir $OutFile $Read1 $Read2
 ```
 ```bash
+tar -czvf checkv-db-v1.5.tar.gz checkv-db-v1.5
+tar -xzvf checkv-db-v1.5.tar.gz
+```
+```bash
 find . -type f -name "*.bam"
 ```
 ```bash
@@ -41,11 +45,27 @@ singularity exec /jic/scratch/groups/Saskia-Hogenhout/tom_heaven/containers/earl
 EOF
 ```
 ```bash
+for file in $(ls -d */ | grep 'bfd'); do
+    Out=$(echo /jic/scratch/groups/Saskia-Hogenhout/tom_heaven/nano_diagnostics/$(basename $file).zip)
+    echo $Out
+    zip -r $Out $file
+done
+```
+```bash
+start_time=$(date +%s)
+# Run for 24 hours (24 hours * 60 minutes * 60 seconds = 86400 seconds)
+end_time=$((start_time + 86400))
+while [ $(date +%s) -lt $end_time ]; do
+  date +"%Y-%m-%d %H:%M:%S"
+  sleep 60
+done
+```
+```bash
 SOURCE_DB_MANIFEST="https://ftp.ncbi.nlm.nih.gov/genomes/TOOLS/FCS/database/test-only/test-only.manifest"
 LOCAL_DB="/home/theaven/scratch/apps/fcs/test"
 python3 fcs.py db get --mft "$SOURCE_DB_MANIFEST" --dir "$LOCAL_DB/test-only" 
 python3 fcs.py db check --mft "$SOURCE_DB_MANIFEST" --dir "$LOCAL_DB/test-only"
-srun -p short  --mem 10G --pty bash
+srun -p jic-medium --ntasks 1 --cpus-per-task 8 --mem 32G --pty bash
 
 SOURCE_DB_MANIFEST="https://ftp.ncbi.nlm.nih.gov/genomes/TOOLS/FCS/database/latest/all.manifest"
 LOCAL_DB="/home/theaven/scratch/apps/fcs/all"
@@ -79,7 +99,7 @@ python3 ./fcs.py screen genome --fasta /jic/scratch/groups/Saskia-Hogenhout/tom_
 
 ```
 ```bash
-for job in $(squeue -u did23faz | egrep '(AssocMaxJobsLimit|(PartitionTimeLimit))' | awk '{print $1}'); do
+for job in $(squeue -u theaven | egrep '(Priority)' | awk '{print $1}'); do
     scancel $job
 done
 
@@ -87,7 +107,7 @@ for job in $(squeue -u did23faz | egrep 'trim_gal' | awk '{print $1}'); do
     scancel $job
 done
 
-for job in $(squeue -u did23faz | grep 'mafft' | awk '{print $1}'); do
+for job in $(squeue -u theaven | grep 'predecto' | awk '{print $1}'); do
     scancel $job
 done
 
@@ -188,6 +208,20 @@ tar -xzvf folder_to_decompress.tar.gz
 tar -czvf archive_name.tar.gz folder_to_compress
 ```
 ```bash
+#in windows powershell
+scp -i "C:\Users\did23faz\old gruffalo\id_ed25519" "\\jic-hpc-data\Group-Scratch\Saskia-Hogenhout\tom_heaven\nano_diagnostics\params.zip" theaven@gruffalo.cropdiversity.ac.uk:/home/theaven/scratch/uncompressed/AlphaFold #
+scp -i "C:\Users\did23faz\old gruffalo\id_ed25519" "\\jic-hpc-data\Group-Scratch\Saskia-Hogenhout\tom_heaven\nano_diagnostics\alphafold.zip" theaven@gruffalo.cropdiversity.ac.uk:/home/theaven/scratch/uncompressed/AlphaFold
+scp -i "C:\Users\did23faz\old gruffalo\id_ed25519" "\\jic-hpc-data\Group-Scratch\Saskia-Hogenhout\tom_heaven\nano_diagnostics\mgnify.zip" theaven@gruffalo.cropdiversity.ac.uk:/home/theaven/scratch/uncompressed/AlphaFold #
+scp -i "C:\Users\did23faz\old gruffalo\id_ed25519" "\\jic-hpc-data\Group-Scratch\Saskia-Hogenhout\tom_heaven\nano_diagnostics\pdb70.zip" theaven@gruffalo.cropdiversity.ac.uk:/home/theaven/scratch/uncompressed/AlphaFold #
+scp -i "C:\Users\did23faz\old gruffalo\id_ed25519" "\\jic-hpc-data\Group-Scratch\Saskia-Hogenhout\tom_heaven\nano_diagnostics\pdb_mmcif.zip" theaven@gruffalo.cropdiversity.ac.uk:/home/theaven/scratch/uncompressed/AlphaFold #
+scp -i "C:\Users\did23faz\old gruffalo\id_ed25519" "\\jic-hpc-data\Group-Scratch\Saskia-Hogenhout\tom_heaven\nano_diagnostics\pdb_seqres.zip" theaven@gruffalo.cropdiversity.ac.uk:/home/theaven/scratch/uncompressed/AlphaFold #
+scp -i "C:\Users\did23faz\old gruffalo\id_ed25519" "\\jic-hpc-data\Group-Scratch\Saskia-Hogenhout\tom_heaven\nano_diagnostics\uniclust30.zip" theaven@gruffalo.cropdiversity.ac.uk:/home/theaven/scratch/uncompressed/AlphaFold #
+scp -i "C:\Users\did23faz\old gruffalo\id_ed25519" "\\jic-hpc-data\Group-Scratch\Saskia-Hogenhout\tom_heaven\nano_diagnostics\uniprot.zip" theaven@gruffalo.cropdiversity.ac.uk:/home/theaven/scratch/uncompressed/AlphaFold #
+scp -i "C:\Users\did23faz\old gruffalo\id_ed25519" "\\jic-hpc-data\Group-Scratch\Saskia-Hogenhout\tom_heaven\nano_diagnostics\bfd.zip" theaven@gruffalo.cropdiversity.ac.uk:/home/theaven/scratch/uncompressed/AlphaFold #
+scp -i "C:\Users\did23faz\old gruffalo\id_ed25519" "\\jic-hpc-data\Group-Scratch\Saskia-Hogenhout\tom_heaven\nano_diagnostics\uniref90.zip" theaven@gruffalo.cropdiversity.ac.uk:/home/theaven/scratch/uncompressed/AlphaFold #
+scp -i "C:\Users\did23faz\old gruffalo\id_ed25519" "\\jic-hpc-data\Group-Scratch\Saskia-Hogenhout\tom_heaven\nano_diagnostics\small_bfd.zip" theaven@gruffalo.cropdiversity.ac.uk:/home/theaven/scratch/uncompressed/AlphaFold #
+```
+```bash
 cd ~
 cp /jic/scratch/groups/Saskia-Hogenhout/tom_heaven/containers/methylkit1.28.0.sif .
 singularity overlay create --size 768 ~/overlay.img
@@ -268,4 +302,60 @@ library(diffHic)
 library(TopDom)
 library(GOTHiC)
 library(DNAZooData)
+```
+```bash
+wget "https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-$(uname)-$(uname -m).sh"
+bash Miniforge3-Linux-x86_64.sh -b -p ~/mamba
+rm Miniforge3-$(uname)-$(uname -m).sh
+ln -s ~/mamba/bin/activate ~/mamba/condabin/activate
+ln -s ~/mamba/bin/deactivate ~/mamba/condabin/deactivate
+export PATH=$PATH:/hpc-home/$USER/mamba/condabin
+echo "export PATH=\$PATH:/hpc-home/$USER/mamba/condabin" >> ~/.bashrc
+
+#The main consequence of the lack of conda init is that mamba activate and mamba deactivate, the most widely-used commands to activate Mamba environments (which you may see in other online tutorials/instructions), will not work. Instead, you will use source activate and source deactivate, which do the same thing.
+
+#Creating environments has to be done on the software23 node, as you need internet access to download the software.
+
+#if your directory is in ~/mamba/envs/ENV_NAME/, running export PATH=~/mamba/envs/ENV_NAME/bin/:$PATH will prepend the executable directory of the ENV_NAME environment to your PATH, meaning you can execute the software within the environment from the shell. 
+
+# list existing environments
+mamba env list
+
+# create an environment using a name or path
+mamba create -n ENV_NAME 
+mamba create -p /path/to/ENV_NAME/
+
+# create an environment with a specific software package
+mamba create -n ENV_NAME -c CHANNEL PACKAGE
+
+# create an environment from an environment manifest file
+mamba create -f /path/to/environment.yml
+
+# install software into the active environment
+mamba install -c CHANNEL PACKAGE
+
+# install software into a specific environment (referenced by name or path)
+mamba install -n ENV_NAME -c CHANNEL PACKAGE
+mamba install -p /path/to/ENV_NAME/ -c CHANNEL package
+
+# list software in active environment
+mamba list
+
+# list software in specific environment (referenced by name or path)
+mamba list -n ENV_NAME
+mamba list -p /path/to/ENV_NAME/
+
+# export manifest of active environment
+mamba env export
+
+# export manifest of specific environment (referenced by name or path)
+mamba env export -n ENV_NAME
+mamba env export -p /path/to/ENV_NAME/
+
+# delete active environment
+mamba env remove
+
+# delete specific environment (referenced by name or path)
+mamba env remove -n ENV_NAME
+mamba env remove -p /path/to/ENV_NAME/
 ```
