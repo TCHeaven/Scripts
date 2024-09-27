@@ -99,7 +99,7 @@ python3 ./fcs.py screen genome --fasta /jic/scratch/groups/Saskia-Hogenhout/tom_
 
 ```
 ```bash
-for job in $(squeue -u theaven | egrep '(Priority)' | awk '{print $1}'); do
+for job in $(squeue -u did23faz | egrep '(Priority)' | awk '{print $1}'); do
     scancel $job
 done
 
@@ -126,6 +126,7 @@ while [ $Jobs -gt 123 ]; do
     printf "."
     Jobs=$(squeue -u did23faz| grep 'paml'  | wc -l)
 done
+
 ```
 ```bash
 for job in $(cat logs/pamllog_homN.txt | grep 'Submitted'| awk '{print $4}'); do
