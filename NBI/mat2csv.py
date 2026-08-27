@@ -8,7 +8,7 @@ if len(sys.argv) != 2:
     sys.exit(1)
 
 input_file = sys.argv[1]
-output_file = os.path.splitext(input_file)[0] + "_mperc.csv"
+output_file = os.path.splitext(input_file)[0] + ".csv"
 
 # Load distance matrix
 acc = defaultdict(list)
