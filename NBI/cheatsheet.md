@@ -2,6 +2,9 @@
 du --max-depth=1 --total -h .
 ```
 ```bash
+conda create -p /data/users/theaven/conda/envs/autocycler -c conda-forge -c bioconda -c defaults autocycler
+```
+```bash
 salloc --mem=200G
 ```
 ```bash

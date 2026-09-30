@@ -40,6 +40,6 @@ module load apptainer/1.4.1-gcc-13.3.0-3coysxn
 
 apptainer exec --bind /data:/data --bind /home/clusterusers/theaven:/home/clusterusers/theaven /data/users/theaven/busco_6.1.0--pyhdfd78af_1 busco -i genome.fa -l $Database -m geno -c"$cpu" -f --tar -o 1
 
-cp 1/run*/short_summary.txt ${OutDir}/${OutFile}_short_summary.txt
+cp 1/run*/short_summary.txt $CurPath/${OutDir}/${OutFile}_short_summary.txt
 echo DONE
 rm -r $WorkDir
